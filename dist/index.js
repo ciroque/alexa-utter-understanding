@@ -1,24 +1,20 @@
 class UtterUnderstanding {
-
-    constructor() {}
-
-    static handler(event, context) {
-        
+    constructor() {
     }
-
-    public handleRequest(event: any, context: any): void {
-        switch(event.request.type) {
+    static handler(event, context) {
+    }
+    handleRequest(event, context) {
+        switch (event.request.type) {
             case 'IntentRequest':
                 break;
             case 'LaunchRequest':
                 break;
             case 'EndSessionRequest':
                 break;
-            default: 
+            default:
                 break;
         }
     }
 }
-
-export.handler = UtterUnderstanding.handler;
-
+handler = UtterUnderstanding.handler;
+//# sourceMappingURL=index.js.map

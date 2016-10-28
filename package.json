@@ -1,0 +1,30 @@
+{
+  "name": "utter-understanding",
+  "version": "1.0.0",
+  "description": "Alexa Skill Sandbox.",
+  "main": "index.js",
+  "typings": "./dist/utter-understanding.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "deepclean": "rm -R node_modules/ typings/",
+    "rebuild": "npm run deepclean && npm install && npm run test && npm run build",
+    "test": "mocha --recursive -R xunit dist/test/$1 | tee test-reports.xml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciroque/alexa-utter-understanding.git"
+  },
+  "author": "Steve Wagner (scalawagz@outlook.com)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ciroque/alexa-utter-understanding /issues"
+  },
+  "homepage": "https://github.com/ciroque/alexa-utter-understanding #readme",
+  "ambientDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160215162030"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}

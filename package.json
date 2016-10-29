@@ -6,9 +6,11 @@
   "typings": "./dist/utter-understanding.d.ts",
   "scripts": {
     "build": "tsc",
-    "deepclean": "rm -R node_modules/ typings/",
+    "deepclean": "rm -R node_modules/ dist/ typings/",
+    "lint": "tslint \"src/**/*.ts\"",
     "rebuild": "npm run deepclean && npm install && npm run test && npm run build",
-    "package": "pushd dist/ && zip -x *.git/* -x *.json -x *.txt -x *.swp -x *.gitignore -x *.sh -r UtterUnderstanding.zip . &&  popd",
+    "package": "cp -R node_modules/ dist/main/node_modules && pushd dist/main && zip -x *.git/* -x *.json -x *.txt -x *.swp -x *.gitignore -x *.sh -r UtterUnderstanding.zip . &&  popd",
+    "postinstall": "typings i",
     "test": "mocha --recursive -R xunit dist/test/$1 | tee test-reports.xml"
   },
   "repository": {
@@ -25,6 +27,9 @@
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160215162030"
   },
   "devDependencies": {
+    "chai": "latest",
+    "codelyzer": "~0.0.26",
+    "mocha": "^3.1.2",
     "tslint": "3.13.0",
     "ts-node": "latest",
     "typescript": "2.0.2"

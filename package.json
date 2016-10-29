@@ -8,6 +8,7 @@
     "build": "tsc",
     "deepclean": "rm -R node_modules/ typings/",
     "rebuild": "npm run deepclean && npm install && npm run test && npm run build",
+    "package": "pushd dist/ && zip -x *.git/* -x *.json -x *.txt -x *.swp -x *.gitignore -x *.sh -r UtterUnderstanding.zip . &&  popd",
     "test": "mocha --recursive -R xunit dist/test/$1 | tee test-reports.xml"
   },
   "repository": {
@@ -24,6 +25,9 @@
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160215162030"
   },
   "devDependencies": {
+    "tslint": "3.13.0",
+    "ts-node": "latest",
+    "typescript": "2.0.2"
   },
   "dependencies": {
   }

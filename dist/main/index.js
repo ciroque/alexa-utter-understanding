@@ -5,10 +5,14 @@ const LaunchRequestHandler_1 = require('./handlers/LaunchRequestHandler');
 const EndSessionRequestHandler_1 = require('./handlers/EndSessionRequestHandler');
 const UnknownRequestHandler_1 = require('./handlers/UnknownRequestHandler');
 class UtterUnderstanding {
+    // public static handler(event: any, context: any): Promise<any> {
+    //     return new Promise((resolve: any) => { resolve('W00T'); });
+    // }
     constructor() {
-        this.logger = new Logger_1.Logger(UtterUnderstanding.ModuleName);
+        this.ModuleName = 'UtterUnderstanding';
+        this.logger = new Logger_1.Logger(this.ModuleName);
         this.handlers = {};
-        this.logger = new Logger_1.Logger(UtterUnderstanding.ModuleName);
+        this.logger = new Logger_1.Logger(this.ModuleName);
         this.handlers['IntentRequest'] = new IntentRequestHandler_1.IntentRequestHandler();
         this.handlers['LaunchRequest'] = new LaunchRequestHandler_1.LaunchRequestHandler();
         this.handlers['EndSessionRequest'] = new EndSessionRequestHandler_1.EndSessionRequestHandler();
@@ -31,7 +35,6 @@ class UtterUnderstanding {
         return result;
     }
 }
-UtterUnderstanding.ModuleName = 'UtterUnderstanding';
 exports.UtterUnderstanding = UtterUnderstanding;
 function handler(event, context) {
     UtterUnderstanding

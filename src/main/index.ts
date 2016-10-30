@@ -8,9 +8,9 @@ import IRequestHandler from './handlers/IRequestHandler';
 import {UnknownRequestHandler} from './handlers/UnknownRequestHandler';
 
 export class UtterUnderstanding {
-    public static ModuleName = 'UtterUnderstanding';
+    private ModuleName = 'UtterUnderstanding';
 
-    private logger: Logger = new Logger(UtterUnderstanding.ModuleName);
+    private logger: Logger = new Logger(this.ModuleName);
     private handlers: IRequestHandlerMap = {};
     private unknownRequestHandler: IRequestHandler;
 
@@ -18,8 +18,12 @@ export class UtterUnderstanding {
         return new UtterUnderstanding().handleRequest(event, context);
     }
 
+    // public static handler(event: any, context: any): Promise<any> {
+    //     return new Promise((resolve: any) => { resolve('W00T'); });
+    // }
+
     constructor() {
-        this.logger = new Logger(UtterUnderstanding.ModuleName);
+        this.logger = new Logger(this.ModuleName);
         this.handlers['IntentRequest'] = new IntentRequestHandler();
         this.handlers['LaunchRequest'] = new LaunchRequestHandler();
         this.handlers['EndSessionRequest'] = new EndSessionRequestHandler();
@@ -45,7 +49,7 @@ export class UtterUnderstanding {
 export function handler(event: any, context: any) {
     UtterUnderstanding
         .handler(event, context)
-        .then((response: AlexaResponse) => {
+        .then((response: any) => {
             context.succeed(response);
         })
         .catch((error) => {

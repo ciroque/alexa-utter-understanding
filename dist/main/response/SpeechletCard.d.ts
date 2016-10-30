@@ -3,5 +3,5 @@ export declare class SpeechletCard {
     content: string;
     type: string;
     static readonly defaultInstance: SpeechletCard;
-    constructor(title: string, content: string, type?: string);
+    constructor(title: string, content: string, type: string);
 }

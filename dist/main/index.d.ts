@@ -1,6 +1,6 @@
 import { AlexaResponse } from './response/AlexaResponse';
 export declare class UtterUnderstanding {
-    static ModuleName: string;
+    private ModuleName;
     private logger;
     private handlers;
     private unknownRequestHandler;

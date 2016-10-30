@@ -3,8 +3,7 @@
  */
 export declare class Logger {
     private module;
-    private sink;
-    constructor(module: string, sink?: any);
+    constructor(module: string);
     debug(message: string): void;
     error(message: string): void;
     trace(message: string): void;

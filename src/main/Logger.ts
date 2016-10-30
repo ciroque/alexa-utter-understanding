@@ -3,7 +3,7 @@
  */
 
 export class Logger {
-    constructor(private module: string, private sink: any = console) { }
+    constructor(private module: string) { }
 
     public debug(message: string): void {
         this.write(LogLevel.debug, message);
@@ -22,7 +22,7 @@ export class Logger {
     }
 
     private write(level: LogLevel, message: string): void {
-        this.sink.log(`${new Date().toISOString()}\t${level}\t${this.module}\t${message}`);
+        console.log(`${new Date().toISOString()}\t${level}\t${this.module}\t${message}`);
     }
 }
 

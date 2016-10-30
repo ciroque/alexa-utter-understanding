@@ -3,9 +3,8 @@
  */
 "use strict";
 class Logger {
-    constructor(module, sink = console) {
+    constructor(module) {
         this.module = module;
-        this.sink = sink;
     }
     debug(message) {
         this.write(LogLevel.debug, message);
@@ -20,7 +19,7 @@ class Logger {
         this.write(LogLevel.warn, message);
     }
     write(level, message) {
-        this.sink.log(`${new Date().toISOString()}\t${level}\t${this.module}\t${message}`);
+        console.log(`${new Date().toISOString()}\t${level}\t${this.module}\t${message}`);
     }
 }
 exports.Logger = Logger;

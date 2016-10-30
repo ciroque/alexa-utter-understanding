@@ -1,11 +1,11 @@
 "use strict";
 class SpeechletOutputSpeech {
-    constructor(text, type = 'PlainText') {
+    constructor(text, type) {
         this.text = text;
         this.type = type;
     }
     static get defaultInstance() {
-        return new SpeechletOutputSpeech('Default Speechlet Output');
+        return new SpeechletOutputSpeech('Default Speechlet Output', 'PlainText');
     }
 }
 exports.SpeechletOutputSpeech = SpeechletOutputSpeech;

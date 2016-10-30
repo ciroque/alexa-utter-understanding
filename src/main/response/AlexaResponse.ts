@@ -4,11 +4,8 @@ export class AlexaResponse {
 
     public static get defaultInstance(): AlexaResponse {
         let speechletResponse = SpeechletResponse.defaultInstance;
-        return new AlexaResponse(speechletResponse);
+        return new AlexaResponse(speechletResponse, {});
     }
 
-    constructor(
-        public response: SpeechletResponse,
-        sessionAttributes: any = {}
-    ) { }
+    constructor(public response: SpeechletResponse, sessionAttributes: any) { }
 }

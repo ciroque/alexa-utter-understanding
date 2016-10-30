@@ -7,7 +7,7 @@ class IntentRequestHandler {
     }
     handleRequest(event, context) {
         this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)})`);
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             let response = AlexaResponse_1.AlexaResponse.defaultInstance;
             this.logger.debug(`handleRequest returning ${JSON.stringify(response)}`);
             resolve(response);

@@ -1,12 +1,11 @@
+import { AlexaResponse } from './AlexaResponse';
 export declare class UtterUnderstanding {
+    static ModuleName: string;
     private logger;
     private handlers;
-    static handler(event: any, context: any): void;
+    private unknownRequestHandler;
+    static handler(event: any, context: any): Promise<AlexaResponse>;
     constructor();
-    handleRequest(event: any, context: any): void;
-    private handleDefault();
-    private handleEndSession();
-    private handleIntent();
-    private handleLaunch();
+    handleRequest(event: any, context: any): Promise<AlexaResponse>;
 }
 export declare function handler(event: any, context: any): void;

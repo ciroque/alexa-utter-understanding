@@ -1,56 +1,47 @@
 "use strict";
 const Logger_1 = require('./Logger');
+const IntentRequestHandler_1 = require('./handlers/IntentRequestHandler');
+const LaunchRequestHandler_1 = require('./handlers/LaunchRequestHandler');
+const EndSessionRequestHandler_1 = require('./handlers/EndSessionRequestHandler');
+const UnknownRequestHandler_1 = require('./handlers/UnknownRequestHandler');
 class UtterUnderstanding {
     constructor() {
-        this.logger = new Logger_1.Logger('UtterUnderstanding');
+        this.logger = new Logger_1.Logger(UtterUnderstanding.ModuleName);
         this.handlers = {};
-        this.handlers['IntentRequest'] = this.handleIntent;
-        this.handlers['LaunchRequest'] = this.handleLaunch;
-        this.handlers['EndSessionRequest'] = this.handleEndSession;
+        this.logger = new Logger_1.Logger(UtterUnderstanding.ModuleName);
+        this.handlers['IntentRequest'] = new IntentRequestHandler_1.IntentRequestHandler();
+        this.handlers['LaunchRequest'] = new LaunchRequestHandler_1.LaunchRequestHandler();
+        this.handlers['EndSessionRequest'] = new EndSessionRequestHandler_1.EndSessionRequestHandler();
+        this.unknownRequestHandler = new UnknownRequestHandler_1.UnknownRequestHandler();
     }
     static handler(event, context) {
-        new UtterUnderstanding().handleRequest(event, context);
+        return new UtterUnderstanding().handleRequest(event, context);
     }
     handleRequest(event, context) {
+        let result;
         try {
-            let handler = this.handlers[event.request.type] || this.handleDefault;
-            handler(event, context)
-                .then((response) => context.succeed(response))
-                .catch((error) => context.fail(error));
+            this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)}, __CONTEXT(${JSON.stringify(context)}))`);
+            let handler = this.handlers[event.request.type] || this.unknownRequestHandler;
+            result = handler.handleRequest(event, context);
         }
         catch (error) {
-            this.logger.error(error);
-            context.fail('Something went horribly horribly wrong.');
+            this.logger.error(`${error}`);
+            result = new Promise((_, reject) => { reject(error); });
         }
-    }
-    handleDefault() {
-        this.logger.debug('UtterUnderstanding::handleDefault');
-        return new Promise((resolve, reject) => {
-            reject('Not Implemented');
-        });
-    }
-    handleEndSession() {
-        this.logger.debug('UtterUnderstanding::handleEndSession');
-        return new Promise((resolve, reject) => {
-            reject('Not Implemented');
-        });
-    }
-    handleIntent() {
-        this.logger.debug('UtterUnderstanding::handleIntent');
-        return new Promise((resolve, reject) => {
-            reject('Not Implemented');
-        });
-    }
-    handleLaunch() {
-        this.logger.debug('UtterUnderstanding::handleLaunch');
-        return new Promise((resolve, reject) => {
-            reject('Not Implemented');
-        });
+        return result;
     }
 }
+UtterUnderstanding.ModuleName = 'UtterUnderstanding';
 exports.UtterUnderstanding = UtterUnderstanding;
 function handler(event, context) {
-    UtterUnderstanding.handler(event, context);
+    UtterUnderstanding
+        .handler(event, context)
+        .then((response) => {
+        context.succeed(response);
+    })
+        .catch((error) => {
+        context.fail(error);
+    });
 }
 exports.handler = handler;
 //# sourceMappingURL=index.js.map

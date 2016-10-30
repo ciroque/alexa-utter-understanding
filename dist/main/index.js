@@ -2,7 +2,7 @@
 const Logger_1 = require('./Logger');
 const IntentRequestHandler_1 = require('./handlers/IntentRequestHandler');
 const LaunchRequestHandler_1 = require('./handlers/LaunchRequestHandler');
-const EndSessionRequestHandler_1 = require('./handlers/EndSessionRequestHandler');
+const SessionEndedRequestHandler_1 = require('./handlers/SessionEndedRequestHandler');
 const UnknownRequestHandler_1 = require('./handlers/UnknownRequestHandler');
 class UtterUnderstanding {
     constructor() {
@@ -12,7 +12,7 @@ class UtterUnderstanding {
         this.logger = new Logger_1.Logger(this.ModuleName);
         this.handlers['IntentRequest'] = new IntentRequestHandler_1.IntentRequestHandler();
         this.handlers['LaunchRequest'] = new LaunchRequestHandler_1.LaunchRequestHandler();
-        this.handlers['EndSessionRequest'] = new EndSessionRequestHandler_1.EndSessionRequestHandler();
+        this.handlers['SessionEndedRequest'] = new SessionEndedRequestHandler_1.SessionEndedRequestHandler();
         this.unknownRequestHandler = new UnknownRequestHandler_1.UnknownRequestHandler();
     }
     static handler(event, context) {

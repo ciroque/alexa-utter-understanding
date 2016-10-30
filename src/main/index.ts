@@ -3,7 +3,7 @@ import {AlexaResponse} from './response/AlexaResponse';
 import IRequestHandlerMap from './handlers/IRequestHandlerMap';
 import {IntentRequestHandler} from './handlers/IntentRequestHandler';
 import {LaunchRequestHandler} from './handlers/LaunchRequestHandler';
-import {EndSessionRequestHandler} from './handlers/EndSessionRequestHandler';
+import {SessionEndedRequestHandler} from './handlers/SessionEndedRequestHandler';
 import IRequestHandler from './handlers/IRequestHandler';
 import {UnknownRequestHandler} from './handlers/UnknownRequestHandler';
 
@@ -22,7 +22,7 @@ export class UtterUnderstanding {
         this.logger = new Logger(this.ModuleName);
         this.handlers['IntentRequest'] = new IntentRequestHandler();
         this.handlers['LaunchRequest'] = new LaunchRequestHandler();
-        this.handlers['EndSessionRequest'] = new EndSessionRequestHandler();
+        this.handlers['SessionEndedRequest'] = new SessionEndedRequestHandler();
         this.unknownRequestHandler = new UnknownRequestHandler();
     }
 

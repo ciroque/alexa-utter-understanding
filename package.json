@@ -32,6 +32,7 @@
     "mocha": "^3.1.2",
     "tslint": "3.13.0",
     "ts-node": "latest",
+    "typings": "latest",
     "typescript": "2.0.2"
   },
   "dependencies": {

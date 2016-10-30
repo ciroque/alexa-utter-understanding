@@ -1,7 +1,4 @@
 "use strict";
-/**
- * Created by swagner on 10/29/16.
- */
 class EndSessionRequestHandler {
     handleRequest(event, context) {
         return new Promise((resolve, reject) => {

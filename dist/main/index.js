@@ -5,9 +5,6 @@ const LaunchRequestHandler_1 = require('./handlers/LaunchRequestHandler');
 const EndSessionRequestHandler_1 = require('./handlers/EndSessionRequestHandler');
 const UnknownRequestHandler_1 = require('./handlers/UnknownRequestHandler');
 class UtterUnderstanding {
-    // public static handler(event: any, context: any): Promise<any> {
-    //     return new Promise((resolve: any) => { resolve('W00T'); });
-    // }
     constructor() {
         this.ModuleName = 'UtterUnderstanding';
         this.logger = new Logger_1.Logger(this.ModuleName);

@@ -8,7 +8,7 @@
     "build": "tsc",
     "deepclean": "rm -R node_modules/ dist/ typings/",
     "lint": "tslint \"src/**/*.ts\"",
-    "rebuild": "npm run deepclean && npm install && npm run test && npm run build",
+    "rebuild": "npm run deepclean && npm install && npm run lint && npm run build && npm run test && npm run package",
     "package": "cp -R node_modules/ dist/main/node_modules && pushd dist/main && zip -x *.git/* -x *.json -x *.txt -x *.swp -x *.gitignore -x *.sh -r UtterUnderstanding.zip . &&  popd",
     "postinstall": "typings i",
     "test": "mocha --recursive -R xunit dist/test/$1 | tee test-reports.xml"

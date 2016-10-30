@@ -1,4 +1,5 @@
 import {SpeechletResponse} from './SpeechletResponse';
+
 export class AlexaResponse {
     public version = '1.0';
 

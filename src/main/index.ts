@@ -18,10 +18,6 @@ export class UtterUnderstanding {
         return new UtterUnderstanding().handleRequest(event, context);
     }
 
-    // public static handler(event: any, context: any): Promise<any> {
-    //     return new Promise((resolve: any) => { resolve('W00T'); });
-    // }
-
     constructor() {
         this.logger = new Logger(this.ModuleName);
         this.handlers['IntentRequest'] = new IntentRequestHandler();

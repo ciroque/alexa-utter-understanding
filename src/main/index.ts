@@ -28,6 +28,7 @@ export class UtterUnderstanding {
 
     public handleRequest(event: any, context: any): Promise<AlexaResponse> {
         let result: Promise<AlexaResponse>;
+
         try {
             this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)}, __CONTEXT(${JSON.stringify(context)}))`);
             let handler: IRequestHandler = this.handlers[event.request.type] || this.unknownRequestHandler;

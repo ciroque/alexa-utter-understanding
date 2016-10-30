@@ -1,6 +1,7 @@
 "use strict";
 const chai = require('chai');
 const index_1 = require('../main/index');
+const UnknownRequestHandler_1 = require('../main/handlers/UnknownRequestHandler');
 let expect = chai.expect;
 class MockEvent {
     constructor(requestType = null) {
@@ -42,6 +43,20 @@ describe('UtterUnderstanding', () => {
             .handleRequest(event, null)
             .then((response) => {
             expect(response).to.not.eq(null);
+            done();
+        })
+            .catch(done);
+    });
+    it('handles an Unknown Request', (done) => {
+        let event = new MockEvent('FELDERGARB');
+        let utterUnderstanding = new index_1.UtterUnderstanding();
+        utterUnderstanding
+            .handleRequest(event, null)
+            .then((response) => {
+            expect(response).to.not.eq(null);
+            // NOTE: The general idea is that this text will contain the available actions...
+            expect(response.response.outputSpeech.text).to.contain(UnknownRequestHandler_1.UnknownRequestHandler.didNotUnderstandText);
+            expect(response.response.reprompt.outputSpeech.text.toLowerCase()).to.contain('available actions include');
             done();
         })
             .catch(done);

@@ -12,7 +12,9 @@ export class IntentRequestHandler implements IRequestHandler {
     public handleRequest(event: any, context: any): Promise<AlexaResponse> {
         this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)})`);
         return new Promise((resolve: any, reject: any) => {
-            resolve(AlexaResponse.defaultInstance);
+            let response = AlexaResponse.defaultInstance;
+            this.logger.debug(`handleRequest returning ${JSON.stringify(response)}`);
+            resolve(response);
         });
     }
 }

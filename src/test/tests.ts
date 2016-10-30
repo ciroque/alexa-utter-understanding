@@ -1,6 +1,7 @@
 import chai = require('chai');
 import {UtterUnderstanding} from '../main/index';
 import {AlexaResponse} from '../main/response/AlexaResponse';
+import {UnknownRequestHandler} from '../main/handlers/UnknownRequestHandler';
 
 let expect = chai.expect;
 
@@ -48,6 +49,22 @@ describe('UtterUnderstanding', () => {
             .handleRequest(event, null)
             .then((response: AlexaResponse) => {
                 expect(response).to.not.eq(null);
+                done();
+            })
+            .catch(done);
+    });
+
+    it('handles an Unknown Request', (done: any) => {
+        let event = new MockEvent('FELDERGARB');
+        let utterUnderstanding = new UtterUnderstanding();
+        utterUnderstanding
+            .handleRequest(event, null)
+            .then((response: AlexaResponse) => {
+                expect(response).to.not.eq(null);
+
+                // NOTE: The general idea is that this text will contain the available actions...
+                expect(response.response.outputSpeech.text).to.contain(UnknownRequestHandler.didNotUnderstandText);
+                expect(response.response.reprompt.outputSpeech.text.toLowerCase()).to.contain('available actions include');
                 done();
             })
             .catch(done);

@@ -1,5 +1,5 @@
 import {Logger} from './Logger';
-import {AlexaResponse} from './AlexaResponse';
+import {AlexaResponse} from './response/AlexaResponse';
 import IRequestHandlerMap from './handlers/IRequestHandlerMap';
 import {IntentRequestHandler} from './handlers/IntentRequestHandler';
 import {LaunchRequestHandler} from './handlers/LaunchRequestHandler';

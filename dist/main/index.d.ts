@@ -1,4 +1,4 @@
-import { AlexaResponse } from './AlexaResponse';
+import { AlexaResponse } from './response/AlexaResponse';
 export declare class UtterUnderstanding {
     static ModuleName: string;
     private logger;

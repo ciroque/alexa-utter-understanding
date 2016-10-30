@@ -1,4 +1,4 @@
-import {AlexaResponse} from '../AlexaResponse';
+import {AlexaResponse} from '../response/AlexaResponse';
 /**
  * Created by swagner on 10/29/16.
  */

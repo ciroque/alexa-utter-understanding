@@ -1,5 +1,5 @@
 "use strict";
-const AlexaResponse_1 = require('../AlexaResponse');
+const AlexaResponse_1 = require('../response/AlexaResponse');
 const Logger_1 = require('../Logger');
 class IntentRequestHandler {
     constructor() {
@@ -8,7 +8,7 @@ class IntentRequestHandler {
     handleRequest(event, context) {
         this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)})`);
         return new Promise((resolve, reject) => {
-            resolve(new AlexaResponse_1.AlexaResponse());
+            resolve(AlexaResponse_1.AlexaResponse.defaultInstance);
         });
     }
 }

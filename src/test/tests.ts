@@ -1,6 +1,6 @@
 import chai = require('chai');
 import {UtterUnderstanding} from '../main/index';
-import {AlexaResponse} from '../main/AlexaResponse';
+import {AlexaResponse} from '../main/response/AlexaResponse';
 
 let expect = chai.expect;
 

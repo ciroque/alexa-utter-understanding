@@ -5,8 +5,9 @@ class SpeechletOutputSpeech {
         this.type = type;
     }
     static get defaultInstance() {
-        return new SpeechletOutputSpeech('Default Speechlet Output', 'PlainText');
+        return new SpeechletOutputSpeech('Default Speechlet Output', SpeechletOutputSpeech.PLAINTEXT);
     }
 }
+SpeechletOutputSpeech.PLAINTEXT = 'PlainText';
 exports.SpeechletOutputSpeech = SpeechletOutputSpeech;
 //# sourceMappingURL=SpeechletOutputSpeech.js.map

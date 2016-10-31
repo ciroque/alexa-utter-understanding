@@ -1,11 +1,11 @@
 import {Logger} from './Logger';
 import {AlexaResponse} from './response/AlexaResponse';
 import IRequestHandlerMap from './handlers/IRequestHandlerMap';
-import {IntentRequestHandler} from './handlers/IntentRequestHandler';
-import {LaunchRequestHandler} from './handlers/LaunchRequestHandler';
-import {SessionEndedRequestHandler} from './handlers/SessionEndedRequestHandler';
+import {IntentRequestHandler} from './handlers/request/IntentRequestHandler';
+import {LaunchRequestHandler} from './handlers/request/LaunchRequestHandler';
+import {SessionEndedRequestHandler} from './handlers/request/SessionEndedRequestHandler';
 import IRequestHandler from './handlers/IRequestHandler';
-import {UnknownRequestHandler} from './handlers/UnknownRequestHandler';
+import {UnknownRequestHandler} from './handlers/request/UnknownRequestHandler';
 
 export class UtterUnderstanding {
     private ModuleName = 'UtterUnderstanding';

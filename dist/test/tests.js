@@ -1,7 +1,7 @@
 "use strict";
 const chai = require('chai');
 const index_1 = require('../main/index');
-const UnknownRequestHandler_1 = require('../main/handlers/UnknownRequestHandler');
+const UnknownRequestHandler_1 = require('../main/handlers/request/UnknownRequestHandler');
 let expect = chai.expect;
 class MockEvent {
     constructor(requestType = null) {

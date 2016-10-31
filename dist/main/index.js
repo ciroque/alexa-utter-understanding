@@ -1,9 +1,9 @@
 "use strict";
 const Logger_1 = require('./Logger');
-const IntentRequestHandler_1 = require('./handlers/IntentRequestHandler');
-const LaunchRequestHandler_1 = require('./handlers/LaunchRequestHandler');
-const SessionEndedRequestHandler_1 = require('./handlers/SessionEndedRequestHandler');
-const UnknownRequestHandler_1 = require('./handlers/UnknownRequestHandler');
+const IntentRequestHandler_1 = require('./handlers/request/IntentRequestHandler');
+const LaunchRequestHandler_1 = require('./handlers/request/LaunchRequestHandler');
+const SessionEndedRequestHandler_1 = require('./handlers/request/SessionEndedRequestHandler');
+const UnknownRequestHandler_1 = require('./handlers/request/UnknownRequestHandler');
 class UtterUnderstanding {
     constructor() {
         this.ModuleName = 'UtterUnderstanding';

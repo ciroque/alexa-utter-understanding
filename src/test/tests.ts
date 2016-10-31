@@ -1,7 +1,7 @@
 import chai = require('chai');
 import {UtterUnderstanding} from '../main/index';
 import {AlexaResponse} from '../main/response/AlexaResponse';
-import {UnknownRequestHandler} from '../main/handlers/UnknownRequestHandler';
+import {UnknownRequestHandler} from '../main/handlers/request/UnknownRequestHandler';
 
 let expect = chai.expect;
 

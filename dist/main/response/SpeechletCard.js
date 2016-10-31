@@ -9,5 +9,6 @@ class SpeechletCard {
         return new SpeechletCard('Card Title', 'Card Content', 'Simple');
     }
 }
+SpeechletCard.SIMPLE = 'Simple';
 exports.SpeechletCard = SpeechletCard;
 //# sourceMappingURL=SpeechletCard.js.map

@@ -1,17 +1,83 @@
 import chai = require('chai');
 import {IntentRequestHandler} from '../main/handlers/request/IntentRequestHandler';
+import {AlexaResponse} from '../main/response/AlexaResponse';
+import {IntentHandler} from '../main/handlers/intent/IntentHandler';
 import {MockEvent} from './MockEvent';
+import {UnknownIntentResponse} from '../main/response/predefined/UnknownIntentResponse';
 
 let expect = chai.expect;
 
-describe('UtterUnderstanding', () => {
-    it('handles the AMAZON.HelpIntent', (done: any) => {
-        let event = new MockEvent('IntentRequest', 'AMAZON.HelpIntent');
+class MockIntentHandler extends IntentHandler {
+    private response: AlexaResponse;
+    private intentHandled = false;
+
+    constructor(response?: AlexaResponse) {
+        super('MockIntentHandler');
+        this.response = response;
+    }
+
+    get handled(): boolean {
+        return this.intentHandled;
+    }
+
+    handleIntent(event: any, context: any): Promise<AlexaResponse> {
+        this.intentHandled = true;
+        return new Promise((resolve: any, reject: any) => {
+            if (this.response instanceof AlexaResponse) {
+                resolve(this.response);
+            } else {
+                reject(this.response);
+            }
+        });
+    }
+}
+
+describe('IntentRequestHandler', () => {
+    it(`Allows registration of an Intent Handler`, () => {
+        let intentName = 'MockIntent';
         let intentRequestHandler = new IntentRequestHandler();
+        let sampleHandler = new MockIntentHandler();
+
+        intentRequestHandler.registerIntentHandler(intentName, sampleHandler);
+
+        expect(intentRequestHandler.handlerRegistered(intentName, sampleHandler)).to.eq(true);
+        expect(intentRequestHandler.handlerRegistered(intentName, null)).to.eq(false);
+        expect(intentRequestHandler.handlerRegistered('dummy', null)).to.eq(false);
+    });
+
+    it(`Handles a registered Intent`, (done: any) => {
+        let intentName = 'MockIntent';
+        let intentRequestHandler = new IntentRequestHandler();
+        let expectedResponse = AlexaResponse.defaultInstance;
+        let sampleHandler = new MockIntentHandler(expectedResponse);
+        let event = new MockEvent('IntentRequest', intentName);
+
+        intentRequestHandler.registerIntentHandler(intentName, sampleHandler);
+
         intentRequestHandler
             .handleRequest(event, null)
-            .then((response: any) => {
-                expect(response).to.not.eq(null);
+            .then((alexaResponse: AlexaResponse) => {
+                expect(alexaResponse).to.eq(expectedResponse);
+                expect(sampleHandler.handled).to.eq(true);
+                done();
+            })
+            .catch(done);
+    });
+
+    it(`Does not handle a non-registered Intent`, (done: any) => {
+        let intentName = 'MockIntent';
+        let intentRequestHandler = new IntentRequestHandler();
+        let expectedResponse = AlexaResponse.defaultInstance;
+        let sampleHandler = new MockIntentHandler(expectedResponse);
+        let event = new MockEvent('IntentRequest', 'NonRegisteredIntent');
+
+        intentRequestHandler.registerIntentHandler(intentName, sampleHandler);
+
+        intentRequestHandler
+            .handleRequest(event, null)
+            .then((alexaResponse: AlexaResponse) => {
+                expect(JSON.stringify(alexaResponse)).to.eq(JSON.stringify(UnknownIntentResponse.getInstance({}, true)));
+                expect(sampleHandler.handled).to.eq(false);
                 done();
             })
             .catch(done);

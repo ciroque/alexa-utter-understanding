@@ -40,6 +40,10 @@ export class UtterUnderstanding {
 
         return result;
     }
+
+    public registerRequestHandler(requestName: string, handler: IRequestHandler): void {
+        this.handlers[requestName] = handler;
+    }
 }
 
 export function handler(event: any, context: any) {

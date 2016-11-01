@@ -3,6 +3,7 @@ import {UtterUnderstanding} from '../main/index';
 import {AlexaResponse} from '../main/response/AlexaResponse';
 import {UnknownRequestHandler} from '../main/handlers/request/UnknownRequestHandler';
 import {MockEvent} from './MockEvent';
+import MockRequestHandler from './MockRequestHandler';
 
 let expect = chai.expect;
 
@@ -42,5 +43,41 @@ describe('UtterUnderstanding', () => {
                 done();
             })
             .catch(done);
+    });
+
+    it('allows a preprocessor to be registered', (done: any) => {
+        let utterUnderstanding = new UtterUnderstanding();
+        let event = new MockEvent('FELDERGARB');
+        let expectedResponse = AlexaResponse.defaultInstance;
+        let handler = new MockRequestHandler(expectedResponse);
+        utterUnderstanding.registerPreProcessHandler(handler);
+
+        utterUnderstanding
+            .handleRequest(event, null)
+            .then((_: AlexaResponse) => {
+                expect(handler.handled).to.eq(true);
+                done();
+            })
+            .catch(done);
+    });
+
+    it('handles a failure in a preprocessor', (done: any) => {
+        let utterUnderstanding = new UtterUnderstanding();
+        let event = new MockEvent('FELDERGARB');
+        let expectedResponse = 'Invalid App ID';
+        let handler = new MockRequestHandler(expectedResponse);
+        utterUnderstanding.registerPreProcessHandler(handler);
+
+        utterUnderstanding
+            .handleRequest(event, null)
+            .catch((error: any) => {
+                expect(handler.handled).to.eq(true);
+                expect(error).to.eq(expectedResponse);
+                done();
+            });
+    });
+
+    xit('allows a post-request processor to be registered', () => {
+
     });
 });

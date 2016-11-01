@@ -11,7 +11,9 @@
     "rebuild": "npm run deepclean && npm install && npm run lint && npm run build && npm run test && npm run package",
     "package": "cp -R node_modules/ dist/main/node_modules && pushd dist/main && zip -x *.git/* -x *.json -x *.txt -x *.swp -x *.gitignore -x *.sh -r UtterUnderstanding.zip . &&  popd",
     "postinstall": "typings i",
-    "test": "mocha --recursive -R xunit dist/test/$1 | tee test-reports.xml"
+    "test": "mocha --recursive -R xunit dist/test/$1 | tee test-reports.xml",
+    "upload": "aws s3 cp UtterUnderstanding.zip s3://alexa-utter-understanding/UtterUnderstanding.zip",
+    "update-function": "aws lambda update-function-code --function-name UtterUnderstanding --zip-file fileb://./dist/main/UtterUnderstanding.zip"
   },
   "repository": {
     "type": "git",

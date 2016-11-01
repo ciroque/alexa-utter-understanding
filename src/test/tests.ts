@@ -2,18 +2,10 @@ import chai = require('chai');
 import {UtterUnderstanding} from '../main/index';
 import {AlexaResponse} from '../main/response/AlexaResponse';
 import {UnknownRequestHandler} from '../main/handlers/request/UnknownRequestHandler';
+import {MockEvent} from './MockEvent';
 
 let expect = chai.expect;
 
-class MockEvent {
-    public request: any;
-
-    constructor(requestType: string = null) {
-        this.request = {
-            type: requestType
-        };
-    }
-}
 //
 // class MockContext {
 //     private logger: Logger = new Logger('MockContext');
@@ -43,7 +35,7 @@ describe('UtterUnderstanding', () => {
     });
 
     it('Handles an IntentRequest', (done: any) => {
-        let event = new MockEvent('IntentRequest');
+        let event = new MockEvent('IntentRequest', 'IntentName');
         let utterUnderstanding = new UtterUnderstanding();
         utterUnderstanding
             .handleRequest(event, null)

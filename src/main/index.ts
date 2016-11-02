@@ -9,6 +9,7 @@ import {UnknownRequestHandler} from './handlers/request/UnknownRequestHandler';
 import NullRequestHandler from './handlers/request/NullRequestHandler';
 import NullRequestPostProcessor from './handlers/request/NullRequestPostProcessor';
 import {RequestPostProcessor} from './handlers/request/RequestPostProcessor';
+import RequestNames from './handlers/request/RequestNames';
 
 export class UtterUnderstanding {
     private ModuleName = 'UtterUnderstanding';
@@ -25,9 +26,9 @@ export class UtterUnderstanding {
 
     constructor() {
         this.logger = new Logger(this.ModuleName);
-        this.handlers['IntentRequest'] = new IntentRequestHandler();
-        this.handlers['LaunchRequest'] = new LaunchRequestHandler();
-        this.handlers['SessionEndedRequest'] = new SessionEndedRequestHandler();
+        this.handlers[RequestNames.IntentRequest] = new IntentRequestHandler();
+        this.handlers[RequestNames.LaunchRequest] = new LaunchRequestHandler();
+        this.handlers[RequestNames.SessionEndedRequest] = new SessionEndedRequestHandler();
         this.unknownRequestHandler = new UnknownRequestHandler();
         this.preProcessor = new NullRequestHandler();
         this.postProcessor = new NullRequestPostProcessor();

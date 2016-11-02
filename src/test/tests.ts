@@ -46,6 +46,41 @@ describe('UtterUnderstanding', () => {
             .catch(done);
     });
 
+    it('allows registration of a request handler', (done) => {
+        let requestName = 'FELDERGARB';
+        let utterUnderstanding = new UtterUnderstanding();
+        let event = new MockEvent(requestName);
+        let expectedResponse = AlexaResponse.defaultInstance;
+        let handler = new MockRequestHandler(expectedResponse);
+        utterUnderstanding.registerRequestHandler(requestName, handler);
+
+        utterUnderstanding
+            .handleRequest(event, null)
+            .then((response: AlexaResponse) => {
+                expect(handler.handled).to.eq(true);
+                expect(response).to.eq(expectedResponse);
+                done();
+            })
+            .catch(done);
+    });
+
+    it('handles failure in registered request handler', (done) => {
+        let requestName = 'FELDERGARB';
+        let utterUnderstanding = new UtterUnderstanding();
+        let event = new MockEvent(requestName);
+        let expectedResponse = 'Could not connect to to the database';
+        let handler = new MockRequestHandler(expectedResponse);
+        utterUnderstanding.registerRequestHandler(requestName, handler);
+
+        utterUnderstanding
+            .handleRequest(event, null)
+            .catch((error: any) => {
+                expect(handler.handled).to.eq(true);
+                expect(error).to.eq(expectedResponse);
+                done();
+            });
+    });
+
     it('allows a preprocessor to be registered', (done: any) => {
         let utterUnderstanding = new UtterUnderstanding();
         let event = new MockEvent('FELDERGARB');

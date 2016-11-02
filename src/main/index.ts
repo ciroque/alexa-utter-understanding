@@ -7,6 +7,8 @@ import {SessionEndedRequestHandler} from './handlers/request/SessionEndedRequest
 import IRequestHandler from './handlers/IRequestHandler';
 import {UnknownRequestHandler} from './handlers/request/UnknownRequestHandler';
 import NullRequestHandler from './handlers/request/NullRequestHandler';
+import NullRequestPostProcessor from './handlers/request/NullRequestPostProcessor';
+import {RequestPostProcessor} from './handlers/request/RequestPostProcessor';
 
 export class UtterUnderstanding {
     private ModuleName = 'UtterUnderstanding';
@@ -15,6 +17,7 @@ export class UtterUnderstanding {
     private handlers: IRequestHandlerMap = {};
     private unknownRequestHandler: IRequestHandler;
     private preProcessor: IRequestHandler;
+    private postProcessor: RequestPostProcessor;
 
     static handler(event: any, context: any): Promise<AlexaResponse> {
         return new UtterUnderstanding().handleRequest(event, context);
@@ -27,6 +30,7 @@ export class UtterUnderstanding {
         this.handlers['SessionEndedRequest'] = new SessionEndedRequestHandler();
         this.unknownRequestHandler = new UnknownRequestHandler();
         this.preProcessor = new NullRequestHandler();
+        this.postProcessor = new NullRequestPostProcessor();
     }
 
     public handleRequest(event: any, context: any): Promise<AlexaResponse> {
@@ -39,6 +43,9 @@ export class UtterUnderstanding {
                 .then(() => {
                     let handler: IRequestHandler = this.handlers[event.request.type] || this.unknownRequestHandler;
                     return handler.handleRequest(event, context);
+                })
+                .then((response: AlexaResponse) => {
+                    return this.postProcessor.handleRequest(event, context, response);
                 })
                 .catch((error: any) => {
                     return new Promise((_: any, reject: any) => { reject(error); });
@@ -58,6 +65,10 @@ export class UtterUnderstanding {
 
     public registerRequestHandler(requestName: string, handler: IRequestHandler): void {
         this.handlers[requestName] = handler;
+    }
+
+    registerPostProcessHandler(handler: RequestPostProcessor) {
+        this.postProcessor = handler;
     }
 }
 

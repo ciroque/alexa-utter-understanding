@@ -4,6 +4,7 @@ import {AlexaResponse} from '../main/response/AlexaResponse';
 import {UnknownRequestHandler} from '../main/handlers/request/UnknownRequestHandler';
 import {MockEvent} from './MockEvent';
 import MockRequestHandler from './MockRequestHandler';
+import {MockRequestPostProcessor} from './MockRequestPostProcessor';
 
 let expect = chai.expect;
 
@@ -77,7 +78,36 @@ describe('UtterUnderstanding', () => {
             });
     });
 
-    xit('allows a post-request processor to be registered', () => {
+    it('allows a post-request processor to be registered', (done: any) => {
+        let utterUnderstanding = new UtterUnderstanding();
+        let event = new MockEvent('FELDERGARB');
+        let expectedResponse = AlexaResponse.defaultInstance;
+        let handler = new MockRequestPostProcessor(expectedResponse);
+        utterUnderstanding.registerPostProcessHandler(handler);
 
+        utterUnderstanding
+            .handleRequest(event, null)
+            .then((response: AlexaResponse) => {
+                expect(handler.handled).to.eq(true);
+                expect(response).to.eq(expectedResponse);
+                done();
+            })
+            .catch(done);
+    });
+
+    it('handles a failure in a postprocessor', (done: any) => {
+        let utterUnderstanding = new UtterUnderstanding();
+        let event = new MockEvent('FELDERGARB');
+        let expectedResponse = 'Something went horribly horribly wrong.';
+        let handler = new MockRequestPostProcessor(expectedResponse);
+        utterUnderstanding.registerPostProcessHandler(handler);
+
+        utterUnderstanding
+            .handleRequest(event, null)
+            .catch((response: any) => {
+                expect(handler.handled).to.eq(true);
+                expect(response).to.eq(expectedResponse);
+                done();
+            });
     });
 });

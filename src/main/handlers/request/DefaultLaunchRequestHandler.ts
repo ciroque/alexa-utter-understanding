@@ -1,9 +1,9 @@
 import {AlexaResponse} from '../../response/AlexaResponse';
 import {RequestHandler} from './RequestHandler';
 
-export class LaunchRequestHandler extends RequestHandler {
+export class DefaultLaunchRequestHandler extends RequestHandler {
     constructor() {
-        super('LaunchRequestHandler');
+        super('DefaultLaunchRequestHandler');
     }
 
     public handleRequest(event: any, context: any): Promise<AlexaResponse> {

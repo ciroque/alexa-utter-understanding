@@ -19,6 +19,7 @@ export class IntentRequestHandler extends RequestHandler {
     }
 
     public registerIntentHandler(name: string, handler: IntentHandler): void {
+        this.logger.debug(`Registering Intent handler for '${name}'.`);
         this.intentHandlers[name] = handler;
     }
 

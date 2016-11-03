@@ -5,7 +5,7 @@ import NullRequestHandler from './handlers/request/NullRequestHandler';
 import {UnknownRequestHandler} from './handlers/request/UnknownRequestHandler';
 import {SessionEndedRequestHandler} from './handlers/request/SessionEndedRequestHandler';
 import RequestNames from './handlers/request/RequestNames';
-import {LaunchRequestHandler} from './handlers/request/LaunchRequestHandler';
+import {DefaultLaunchRequestHandler} from './handlers/request/DefaultLaunchRequestHandler';
 import {IntentRequestHandler} from './handlers/request/IntentRequestHandler';
 import {Logger} from './Logger';
 import IRequestHandlerMap from './handlers/IRequestHandlerMap';
@@ -26,7 +26,7 @@ export class UtterUnderstanding {
     constructor() {
         this.logger = new Logger(this.ModuleName);
         this.handlers[RequestNames.IntentRequest] = new IntentRequestHandler();
-        this.handlers[RequestNames.LaunchRequest] = new LaunchRequestHandler();
+        this.handlers[RequestNames.LaunchRequest] = new DefaultLaunchRequestHandler();
         this.handlers[RequestNames.SessionEndedRequest] = new SessionEndedRequestHandler();
         this.unknownRequestHandler = new UnknownRequestHandler();
         this.preProcessor = new NullRequestHandler();

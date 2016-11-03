@@ -4,7 +4,7 @@ const NullRequestHandler_1 = require('./handlers/request/NullRequestHandler');
 const UnknownRequestHandler_1 = require('./handlers/request/UnknownRequestHandler');
 const SessionEndedRequestHandler_1 = require('./handlers/request/SessionEndedRequestHandler');
 const RequestNames_1 = require('./handlers/request/RequestNames');
-const LaunchRequestHandler_1 = require('./handlers/request/LaunchRequestHandler');
+const DefaultLaunchRequestHandler_1 = require('./handlers/request/DefaultLaunchRequestHandler');
 const IntentRequestHandler_1 = require('./handlers/request/IntentRequestHandler');
 const Logger_1 = require('./Logger');
 class UtterUnderstanding {
@@ -14,7 +14,7 @@ class UtterUnderstanding {
         this.handlers = {};
         this.logger = new Logger_1.Logger(this.ModuleName);
         this.handlers[RequestNames_1.default.IntentRequest] = new IntentRequestHandler_1.IntentRequestHandler();
-        this.handlers[RequestNames_1.default.LaunchRequest] = new LaunchRequestHandler_1.LaunchRequestHandler();
+        this.handlers[RequestNames_1.default.LaunchRequest] = new DefaultLaunchRequestHandler_1.DefaultLaunchRequestHandler();
         this.handlers[RequestNames_1.default.SessionEndedRequest] = new SessionEndedRequestHandler_1.SessionEndedRequestHandler();
         this.unknownRequestHandler = new UnknownRequestHandler_1.UnknownRequestHandler();
         this.preProcessor = new NullRequestHandler_1.default();

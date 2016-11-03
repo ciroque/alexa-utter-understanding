@@ -13,6 +13,7 @@ class IntentRequestHandler extends RequestHandler_1.RequestHandler {
         return handler.handleIntent(event, context);
     }
     registerIntentHandler(name, handler) {
+        this.logger.debug(`Registering Intent handler for '${name}'.`);
         this.intentHandlers[name] = handler;
     }
     handlerRegistered(name, handler) {

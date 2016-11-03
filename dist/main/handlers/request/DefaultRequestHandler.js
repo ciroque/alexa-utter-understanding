@@ -1,8 +1,8 @@
 "use strict";
 const RequestHandler_1 = require('./RequestHandler');
-class NullRequestHandler extends RequestHandler_1.RequestHandler {
+class DefaultRequestHandler extends RequestHandler_1.RequestHandler {
     constructor() {
-        super('NullRequestHandler');
+        super('DefaultRequestHandler');
     }
     handleRequest(event, context) {
         this.logger.debug('handling request');
@@ -10,5 +10,5 @@ class NullRequestHandler extends RequestHandler_1.RequestHandler {
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = NullRequestHandler;
-//# sourceMappingURL=NullRequestHandler.js.map
+exports.default = DefaultRequestHandler;
+//# sourceMappingURL=DefaultRequestHandler.js.map

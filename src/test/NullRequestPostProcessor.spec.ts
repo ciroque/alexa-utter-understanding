@@ -1,10 +1,10 @@
 import chai = require('chai');
-import NullRequestPostProcessor from '../main/handlers/request/NullRequestPostProcessor';
+import NullRequestPostProcessor from '../main/handlers/request/DefaultRequestPostProcessor';
 import {AlexaResponse} from '../main/response/AlexaResponse';
 
 let expect = chai.expect;
 
-describe('NullRequestPostProcessor', () => {
+describe('DefaultRequestPostProcessor', () => {
     it('Returns the given AlexaResponse', (done: any) => {
         let expectedResponse = AlexaResponse.defaultInstance;
         let processor = new NullRequestPostProcessor();

@@ -1,6 +1,6 @@
 "use strict";
-const NullRequestPostProcessor_1 = require('./handlers/request/NullRequestPostProcessor');
-const NullRequestHandler_1 = require('./handlers/request/NullRequestHandler');
+const DefaultRequestPostProcessor_1 = require('./handlers/request/DefaultRequestPostProcessor');
+const DefaultRequestHandler_1 = require('./handlers/request/DefaultRequestHandler');
 const UnknownRequestHandler_1 = require('./handlers/request/UnknownRequestHandler');
 const SessionEndedRequestHandler_1 = require('./handlers/request/SessionEndedRequestHandler');
 const RequestNames_1 = require('./handlers/request/RequestNames');
@@ -17,8 +17,8 @@ class UtterUnderstanding {
         this.handlers[RequestNames_1.default.LaunchRequest] = new DefaultLaunchRequestHandler_1.DefaultLaunchRequestHandler();
         this.handlers[RequestNames_1.default.SessionEndedRequest] = new SessionEndedRequestHandler_1.SessionEndedRequestHandler();
         this.unknownRequestHandler = new UnknownRequestHandler_1.UnknownRequestHandler();
-        this.preProcessor = new NullRequestHandler_1.default();
-        this.postProcessor = new NullRequestPostProcessor_1.default();
+        this.preProcessor = new DefaultRequestHandler_1.default();
+        this.postProcessor = new DefaultRequestPostProcessor_1.default();
     }
     static handler(event, context) {
         return new UtterUnderstanding().handleRequest(event, context);

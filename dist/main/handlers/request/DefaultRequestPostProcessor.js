@@ -1,8 +1,8 @@
 "use strict";
 const RequestPostProcessor_1 = require('./RequestPostProcessor');
-class NullRequestPostProcessor extends RequestPostProcessor_1.RequestPostProcessor {
+class DefaultRequestPostProcessor extends RequestPostProcessor_1.RequestPostProcessor {
     constructor() {
-        super('NullRequestPostProcessor');
+        super('DefaultRequestPostProcessor');
     }
     handleRequest(event, context, response) {
         this.logger.debug('Returning the given response.');
@@ -10,5 +10,5 @@ class NullRequestPostProcessor extends RequestPostProcessor_1.RequestPostProcess
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = NullRequestPostProcessor;
-//# sourceMappingURL=NullRequestPostProcessor.js.map
+exports.default = DefaultRequestPostProcessor;
+//# sourceMappingURL=DefaultRequestPostProcessor.js.map

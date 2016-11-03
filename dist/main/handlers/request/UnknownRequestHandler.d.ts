@@ -1,7 +1,7 @@
 import { AlexaResponse } from '../../response/AlexaResponse';
-import IRequestHandler from '../IRequestHandler';
-export declare class UnknownRequestHandler implements IRequestHandler {
+import { RequestHandler } from './RequestHandler';
+export declare class UnknownRequestHandler extends RequestHandler {
     static didNotUnderstandText: string;
-    private logger;
+    constructor();
     handleRequest(event: any, context: any): Promise<AlexaResponse>;
 }

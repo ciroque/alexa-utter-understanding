@@ -1,5 +1,5 @@
-import IRequestHandler from './IRequestHandler';
+import { RequestHandler } from './request/RequestHandler';
 interface IRequestHandlerMap {
-    [requestType: string]: IRequestHandler;
+    [requestType: string]: RequestHandler;
 }
 export default IRequestHandlerMap;

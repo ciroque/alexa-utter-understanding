@@ -1,10 +1,10 @@
 "use strict";
-const Logger_1 = require('../../Logger');
 const UnknownIntentHandler_1 = require('../intent/UnknownIntentHandler');
-class IntentRequestHandler {
+const RequestHandler_1 = require('./RequestHandler');
+class IntentRequestHandler extends RequestHandler_1.RequestHandler {
     constructor(unknownIntentHandler) {
+        super('IntentRequestHandler');
         this.intentHandlers = [];
-        this.logger = new Logger_1.Logger('IntentRequestHandler');
         this.defaultHandler = unknownIntentHandler || new UnknownIntentHandler_1.UnknownIntentHandler();
     }
     handleRequest(event, context) {

@@ -1,6 +1,6 @@
 {
   "name": "utter-understanding",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Alexa Skill Sandbox.",
   "main": "index.js",
   "typings": "./dist/utter-understanding.d.ts",

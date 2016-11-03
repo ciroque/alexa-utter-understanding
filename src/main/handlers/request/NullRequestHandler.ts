@@ -1,12 +1,9 @@
-import IRequestHandler from '../IRequestHandler';
 import {AlexaResponse} from '../../response/AlexaResponse';
-import {Logger} from '../../Logger';
+import {RequestHandler} from './RequestHandler';
 
-export default class NullRequestHandler implements IRequestHandler {
-    private logger: Logger;
-
+export default class NullRequestHandler extends RequestHandler {
     constructor() {
-        this.logger = new Logger('NullRequestHandler');
+        super('NullRequestHandler');
     }
 
     handleRequest(event: any, context: any): Promise<AlexaResponse> {

@@ -1,11 +1,13 @@
 import {AlexaResponse} from '../../response/AlexaResponse';
-import IRequestHandler from '../IRequestHandler';
-import {Logger} from '../../Logger';
 import {UnknownRequestResponse} from '../../response/predefined/UnknownRequestResponse';
+import {RequestHandler} from './RequestHandler';
 
-export class UnknownRequestHandler implements IRequestHandler {
+export class UnknownRequestHandler extends RequestHandler {
     public static didNotUnderstandText = 'I did not understand the request.';
-    private logger = new Logger('UnknownRequestHandler');
+
+    constructor() {
+        super('UnknownRequestHandler');
+    }
 
     public handleRequest(event: any, context: any): Promise<AlexaResponse> {
         this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)})`);

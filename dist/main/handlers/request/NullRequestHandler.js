@@ -1,8 +1,8 @@
 "use strict";
-const Logger_1 = require('../../Logger');
-class NullRequestHandler {
+const RequestHandler_1 = require('./RequestHandler');
+class NullRequestHandler extends RequestHandler_1.RequestHandler {
     constructor() {
-        this.logger = new Logger_1.Logger('NullRequestHandler');
+        super('NullRequestHandler');
     }
     handleRequest(event, context) {
         this.logger.debug('handling request');

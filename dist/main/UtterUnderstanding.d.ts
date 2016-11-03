@@ -1,6 +1,6 @@
 import { RequestPostProcessor } from './handlers/request/RequestPostProcessor';
-import IRequestHandler from './handlers/IRequestHandler';
 import { AlexaResponse } from './response/AlexaResponse';
+import { RequestHandler } from './handlers/request/RequestHandler';
 export declare class UtterUnderstanding {
     private ModuleName;
     private logger;
@@ -11,7 +11,7 @@ export declare class UtterUnderstanding {
     static handler(event: any, context: any): Promise<AlexaResponse>;
     constructor();
     handleRequest(event: any, context: any): Promise<AlexaResponse>;
-    registerPreProcessHandler(handler: IRequestHandler): void;
-    registerRequestHandler(requestName: string, handler: IRequestHandler): void;
+    registerPreProcessHandler(handler: RequestHandler): void;
+    registerRequestHandler(requestName: string, handler: RequestHandler): void;
     registerPostProcessHandler(handler: RequestPostProcessor): void;
 }

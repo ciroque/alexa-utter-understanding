@@ -1,9 +1,9 @@
 "use strict";
 const AlexaResponse_1 = require('../main/response/AlexaResponse');
-const Logger_1 = require('../main/Logger');
-class MockRequestHandler {
+const RequestHandler_1 = require('../main/handlers/request/RequestHandler');
+class MockRequestHandler extends RequestHandler_1.RequestHandler {
     constructor(response) {
-        this.logger = new Logger_1.Logger('MockRequestHandler');
+        super('MockRequestHandler');
         this.requestHandled = false;
         this.response = response;
     }

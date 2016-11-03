@@ -1,9 +1,10 @@
 import {AlexaResponse} from '../../response/AlexaResponse';
-import IRequestHandler from '../IRequestHandler';
-import {Logger} from '../../Logger';
+import {RequestHandler} from './RequestHandler';
 
-export class SessionEndedRequestHandler implements IRequestHandler {
-    private logger = new Logger('SessionEndedRequestHandler');
+export class SessionEndedRequestHandler extends RequestHandler {
+    constructor() {
+        super('SessionEndedRequestHandler');
+    }
 
     public handleRequest(event: any, context: any): Promise<AlexaResponse> {
         this.logger.debug('Ending Session');

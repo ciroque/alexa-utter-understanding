@@ -1,12 +1,12 @@
-import {Logger} from '../../Logger';
 import {AlexaResponse} from '../../response/AlexaResponse';
+import {Logger} from '../../Logger';
 
-export abstract class IntentHandler {
+export abstract class RequestHandler {
     protected logger: Logger;
 
     constructor(protected name: string) {
         this.logger = new Logger(name);
     }
 
-    public abstract handleIntent(event: any, context: any): Promise<AlexaResponse>;
+    public abstract handleRequest(event: any, context: any): Promise<AlexaResponse>;
 }

@@ -1,7 +1,6 @@
-import IRequestHandler from '../main/handlers/IRequestHandler';
 import { AlexaResponse } from '../main/response/AlexaResponse';
-export default class MockRequestHandler implements IRequestHandler {
-    private logger;
+import { RequestHandler } from '../main/handlers/request/RequestHandler';
+export default class MockRequestHandler extends RequestHandler {
     private response;
     private requestHandled;
     constructor(response?: any);

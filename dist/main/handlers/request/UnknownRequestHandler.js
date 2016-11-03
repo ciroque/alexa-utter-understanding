@@ -1,9 +1,9 @@
 "use strict";
-const Logger_1 = require('../../Logger');
 const UnknownRequestResponse_1 = require('../../response/predefined/UnknownRequestResponse');
-class UnknownRequestHandler {
+const RequestHandler_1 = require('./RequestHandler');
+class UnknownRequestHandler extends RequestHandler_1.RequestHandler {
     constructor() {
-        this.logger = new Logger_1.Logger('UnknownRequestHandler');
+        super('UnknownRequestHandler');
     }
     handleRequest(event, context) {
         this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)})`);

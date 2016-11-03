@@ -1,16 +1,14 @@
 import {AlexaResponse} from '../../response/AlexaResponse';
-import IRequestHandler from '../IRequestHandler';
-import {Logger} from '../../Logger';
 import {UnknownIntentHandler} from '../intent/UnknownIntentHandler';
 import {IntentHandler} from '../intent/IntentHandler';
+import {RequestHandler} from './RequestHandler';
 
-export class IntentRequestHandler implements IRequestHandler {
-    private logger: Logger;
+export class IntentRequestHandler extends RequestHandler {
     private intentHandlers: IntentHandler[] = [];
     private defaultHandler: IntentHandler;
 
     constructor(unknownIntentHandler?: IntentHandler) {
-        this.logger = new Logger('IntentRequestHandler');
+        super('IntentRequestHandler');
         this.defaultHandler = unknownIntentHandler || new UnknownIntentHandler();
     }
 

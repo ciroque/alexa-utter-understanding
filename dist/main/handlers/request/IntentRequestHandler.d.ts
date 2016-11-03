@@ -1,8 +1,7 @@
 import { AlexaResponse } from '../../response/AlexaResponse';
-import IRequestHandler from '../IRequestHandler';
 import { IntentHandler } from '../intent/IntentHandler';
-export declare class IntentRequestHandler implements IRequestHandler {
-    private logger;
+import { RequestHandler } from './RequestHandler';
+export declare class IntentRequestHandler extends RequestHandler {
     private intentHandlers;
     private defaultHandler;
     constructor(unknownIntentHandler?: IntentHandler);

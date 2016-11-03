@@ -1,5 +1,9 @@
 "use strict";
-class LaunchRequestHandler {
+const RequestHandler_1 = require('./RequestHandler');
+class LaunchRequestHandler extends RequestHandler_1.RequestHandler {
+    constructor() {
+        super('LaunchRequestHandler');
+    }
     handleRequest(event, context) {
         return new Promise((resolve, reject) => {
             reject('Not Implemented');

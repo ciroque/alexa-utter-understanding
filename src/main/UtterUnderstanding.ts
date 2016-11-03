@@ -1,5 +1,4 @@
 import {RequestPostProcessor} from './handlers/request/RequestPostProcessor';
-import IRequestHandler from './handlers/IRequestHandler';
 import {AlexaResponse} from './response/AlexaResponse';
 import NullRequestPostProcessor from './handlers/request/NullRequestPostProcessor';
 import NullRequestHandler from './handlers/request/NullRequestHandler';
@@ -10,13 +9,15 @@ import {LaunchRequestHandler} from './handlers/request/LaunchRequestHandler';
 import {IntentRequestHandler} from './handlers/request/IntentRequestHandler';
 import {Logger} from './Logger';
 import IRequestHandlerMap from './handlers/IRequestHandlerMap';
+import {RequestHandler} from './handlers/request/RequestHandler';
+
 export class UtterUnderstanding {
     private ModuleName = 'UtterUnderstanding';
 
     private logger: Logger = new Logger(this.ModuleName);
     private handlers: IRequestHandlerMap = {};
-    private unknownRequestHandler: IRequestHandler;
-    private preProcessor: IRequestHandler;
+    private unknownRequestHandler: RequestHandler;
+    private preProcessor: RequestHandler;
     private postProcessor: RequestPostProcessor;
 
     static handler(event: any, context: any): Promise<AlexaResponse> {
@@ -41,7 +42,7 @@ export class UtterUnderstanding {
             result = this.preProcessor
                 .handleRequest(event, context)
                 .then(() => {
-                    let handler: IRequestHandler = this.handlers[event.request.type] || this.unknownRequestHandler;
+                    let handler: RequestHandler = this.handlers[event.request.type] || this.unknownRequestHandler;
                     return handler.handleRequest(event, context);
                 })
                 .then((response: AlexaResponse) => {
@@ -59,11 +60,11 @@ export class UtterUnderstanding {
         return result;
     }
 
-    public registerPreProcessHandler(handler: IRequestHandler): void {
+    public registerPreProcessHandler(handler: RequestHandler): void {
         this.preProcessor = handler;
     }
 
-    public registerRequestHandler(requestName: string, handler: IRequestHandler): void {
+    public registerRequestHandler(requestName: string, handler: RequestHandler): void {
         this.handlers[requestName] = handler;
     }
 

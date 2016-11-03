@@ -1,13 +1,12 @@
-import IRequestHandler from '../main/handlers/IRequestHandler';
 import {AlexaResponse} from '../main/response/AlexaResponse';
-import {Logger} from '../main/Logger';
+import {RequestHandler} from '../main/handlers/request/RequestHandler';
 
-export default class MockRequestHandler implements IRequestHandler {
-    private logger = new Logger('MockRequestHandler');
+export default class MockRequestHandler extends RequestHandler {
     private response: AlexaResponse;
     private requestHandled = false;
 
     constructor(response?: any) {
+        super('MockRequestHandler');
         this.response = response;
     }
 

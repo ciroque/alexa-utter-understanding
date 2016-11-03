@@ -1,0 +1,1 @@
+{"version":3,"file":"MockEvent.js","sourceRoot":"","sources":["../../src/test/MockEvent.ts"],"names":[],"mappings":";AAAA;IAGI,YAAY,WAAW,GAAW,IAAI,EAAE,UAAU,GAAW,IAAI;QAC7D,IAAI,CAAC,OAAO,GAAG;YACX,IAAI,EAAE,WAAW;YACjB,MAAM,EAAE;gBACJ,IAAI,EAAE,UAAU;aACnB;SACJ,CAAC;IACN,CAAC;AACL,CAAC;AAXY,iBAAS,YAWrB,CAAA"}

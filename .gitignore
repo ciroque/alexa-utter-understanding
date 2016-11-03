@@ -2,4 +2,5 @@ typings/
 .idea/
 test-reports.xml
 node_modules/
-!dist/main/node_modules
+dist/main/node_modules
+dist/main/*.zip

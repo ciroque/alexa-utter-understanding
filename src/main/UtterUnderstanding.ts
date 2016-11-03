@@ -13,7 +13,6 @@ import {RequestHandler} from './handlers/request/RequestHandler';
 
 export class UtterUnderstanding {
     private ModuleName = 'UtterUnderstanding';
-
     private logger: Logger = new Logger(this.ModuleName);
     private handlers: IRequestHandlerMap = {};
     private unknownRequestHandler: RequestHandler;
@@ -72,4 +71,3 @@ export class UtterUnderstanding {
         this.postProcessor = handler;
     }
 }
-

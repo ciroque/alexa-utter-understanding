@@ -1,5 +1,5 @@
 import chai = require('chai');
-import {UtterUnderstanding} from '../main/index';
+import {UtterUnderstanding} from '../main/UtterUnderstanding';
 import {AlexaResponse} from '../main/response/AlexaResponse';
 import {UnknownRequestHandler} from '../main/handlers/request/UnknownRequestHandler';
 import {MockEvent} from './MockEvent';

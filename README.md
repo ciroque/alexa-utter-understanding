@@ -1,5 +1,7 @@
 # alexa-utter-understanding
 
+## Extensible library for creating Amazon Echo (Alexa) Skills with Node.js.
+
 Steps:
 
 1. Clone `git clone https://github.com/ciroque/alexa-utter-understanding.git`

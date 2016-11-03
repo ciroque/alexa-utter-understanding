@@ -7,9 +7,8 @@ export default class NullRequestPostProcessor extends RequestPostProcessor {
         super('NullRequestPostProcessor');
     }
 
-
     handleRequest(event: any, context: any, response: AlexaResponse): Promise<AlexaResponse> {
-        this.logger.debug(`Post-processing request.`);
+        this.logger.debug('Returning the given response.');
         return new Promise((resolve: any) => { resolve(response); });
     }
 }

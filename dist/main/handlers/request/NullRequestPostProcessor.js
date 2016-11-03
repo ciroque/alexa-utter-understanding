@@ -5,7 +5,7 @@ class NullRequestPostProcessor extends RequestPostProcessor_1.RequestPostProcess
         super('NullRequestPostProcessor');
     }
     handleRequest(event, context, response) {
-        this.logger.debug(`Post-processing request.`);
+        this.logger.debug('Returning the given response.');
         return new Promise((resolve) => { resolve(response); });
     }
 }

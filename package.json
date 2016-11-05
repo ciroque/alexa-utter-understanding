@@ -1,6 +1,6 @@
 {
   "name": "utter-understanding",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Alexa Skill Sandbox.",
   "main": "index.js",
   "typings": "./dist/utter-understanding.d.ts",
@@ -9,11 +9,11 @@
     "deepclean": "rm -R node_modules/ dist/ typings/",
     "lint": "tslint \"src/**/*.ts\"",
     "rebuild": "npm run deepclean && npm install && npm run lint && npm run build && npm run test && npm run package",
-    "package": "cp -R node_modules/ dist/main/node_modules && pushd dist/main && zip -x *.git/* -x *.json -x *.txt -x *.swp -x *.gitignore -x *.sh -r UtterUnderstanding.zip . &&  popd",
+    "package": "cp -R node_modules/ dist/main/node_modules && cd dist/main && zip -x *.git/* -x *.json -x *.txt -x *.swp -x *.gitignore -x *.sh -r UtterUnderstanding.zip . &&  cd -",
     "postinstall": "typings i",
     "test": "mocha --recursive -R xunit dist/test/$1 | tee test-reports.xml",
     "upload": "aws s3 cp UtterUnderstanding.zip s3://alexa-utter-understanding/UtterUnderstanding.zip",
-    "update-lambda-function": "aws lambda update-function-code --function-name UtterUnderstanding --zip-file fileb://./dist/main/UtterUnderstanding.zip"
+    "update-lambda-function": "aws lambda update-function-code --function-name UtterUnderstanding --zip-file fileb://./dist/main/UtterUnderstanding.zip --publish"
   },
   "repository": {
     "type": "git",

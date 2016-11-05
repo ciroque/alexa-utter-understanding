@@ -1,6 +1,7 @@
 import { SpeechletResponse } from './SpeechletResponse';
 export declare class SpeechletResponseEnvelope {
     response: SpeechletResponse;
+    sessionAttributes: any;
     version: string;
     static readonly defaultInstance: SpeechletResponseEnvelope;
     static readonly linkAccountInstance: SpeechletResponseEnvelope;

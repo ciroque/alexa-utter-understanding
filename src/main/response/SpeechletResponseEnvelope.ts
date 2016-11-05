@@ -23,5 +23,5 @@ export class SpeechletResponseEnvelope {
         return new SpeechletResponseEnvelope(response, {});
     }
 
-    constructor(public response: SpeechletResponse, sessionAttributes: any) { }
+    constructor(public response: SpeechletResponse, public sessionAttributes: any) { }
 }

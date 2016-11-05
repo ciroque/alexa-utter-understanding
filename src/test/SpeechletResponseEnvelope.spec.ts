@@ -2,6 +2,8 @@ import chai = require('chai');
 import {SpeechletResponseEnvelope} from '../main/response/SpeechletResponseEnvelope';
 import {LinkAccountCard} from '../main/response/speech/LinkAccountCard';
 import {OutputSpeech} from '../main/response/speech/OutputSpeech';
+import {Card} from '../main/response/speech/Card';
+import {SpeechletResponse} from '../main/response/SpeechletResponse';
 
 let expect = chai.expect;
 
@@ -18,5 +20,18 @@ describe('SpeechletResponseEnvelope', () => {
         console.log(`\n\n${JSON.stringify(linkAccountResponse)}\n\n`);
 
         done();
+    });
+
+    it('maintains the sessionAttribute property', () => {
+        let card = Card.defaultInstance;
+        let outputSpeech = new OutputSpeech('TEST', OutputSpeech.PLAINTEXT);
+        let response = new SpeechletResponse(outputSpeech, card, null, true);
+        let theDate = new Date();
+        let sessionAttributes = { key: 'value', date: theDate };
+        let envelope = new SpeechletResponseEnvelope(response, sessionAttributes);
+
+        expect(envelope.sessionAttributes).to.not.eq(null);
+        expect(envelope.sessionAttributes.key).eq('value');
+        expect(envelope.sessionAttributes.date).to.eq(theDate);
     });
 });

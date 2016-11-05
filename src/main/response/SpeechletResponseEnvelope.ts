@@ -4,6 +4,7 @@ import {LinkAccountCard} from './speech/LinkAccountCard';
 
 export class SpeechletResponseEnvelope {
     public version = '1.0';
+    public sessionAttributes: any;
 
     public static get defaultInstance(): SpeechletResponseEnvelope {
         let speechletResponse = SpeechletResponse.defaultInstance;
@@ -23,5 +24,7 @@ export class SpeechletResponseEnvelope {
         return new SpeechletResponseEnvelope(response, {});
     }
 
-    constructor(public response: SpeechletResponse, public sessionAttributes: any) { }
+    constructor(public response: SpeechletResponse, sessionAttributes: any) {
+        this.sessionAttributes = sessionAttributes;
+    }
 }

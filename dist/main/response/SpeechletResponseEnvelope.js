@@ -5,8 +5,8 @@ const LinkAccountCard_1 = require('./speech/LinkAccountCard');
 class SpeechletResponseEnvelope {
     constructor(response, sessionAttributes) {
         this.response = response;
-        this.sessionAttributes = sessionAttributes;
         this.version = '1.0';
+        this.sessionAttributes = sessionAttributes;
     }
     static get defaultInstance() {
         let speechletResponse = SpeechletResponse_1.SpeechletResponse.defaultInstance;

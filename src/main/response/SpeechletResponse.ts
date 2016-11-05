@@ -1,20 +1,19 @@
-import {SpeechletOutputSpeech} from './speech/OutputSpeech';
-import {SpeechletCard} from './speech/Card';
-import {SpeechletReprompt} from './speech/Reprompt';
+import {OutputSpeech} from './speech/OutputSpeech';
+import {Card} from './speech/Card';
+import {Reprompt} from './speech/Reprompt';
 
 export class SpeechletResponse {
-
     public static get defaultInstance(): SpeechletResponse {
-        let outputSpeech = SpeechletOutputSpeech.defaultInstance;
-        let card = SpeechletCard.defaultInstance;
-        let reprompt = SpeechletReprompt.defaultInstance;
+        let outputSpeech = OutputSpeech.defaultInstance;
+        let card = Card.defaultInstance;
+        let reprompt = Reprompt.defaultInstance;
         return new SpeechletResponse(outputSpeech, card, reprompt, true);
     }
 
     constructor(
-        public outputSpeech: SpeechletOutputSpeech,
-        public card: SpeechletCard,
-        public reprompt: SpeechletReprompt,
+        public outputSpeech: OutputSpeech,
+        public card: Card,
+        public reprompt: Reprompt,
         public shouldEndSession: boolean
     ) {}
 }

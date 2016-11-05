@@ -10,9 +10,9 @@ class SpeechletResponse {
         this.shouldEndSession = shouldEndSession;
     }
     static get defaultInstance() {
-        let outputSpeech = OutputSpeech_1.SpeechletOutputSpeech.defaultInstance;
-        let card = Card_1.SpeechletCard.defaultInstance;
-        let reprompt = Reprompt_1.SpeechletReprompt.defaultInstance;
+        let outputSpeech = OutputSpeech_1.OutputSpeech.defaultInstance;
+        let card = Card_1.Card.defaultInstance;
+        let reprompt = Reprompt_1.Reprompt.defaultInstance;
         return new SpeechletResponse(outputSpeech, card, reprompt, true);
     }
 }

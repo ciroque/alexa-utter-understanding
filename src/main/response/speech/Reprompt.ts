@@ -1,9 +1,9 @@
-import {SpeechletOutputSpeech} from './OutputSpeech';
+import {OutputSpeech} from './OutputSpeech';
 
-export class SpeechletReprompt {
-    public static get defaultInstance(): SpeechletReprompt {
-        return new SpeechletReprompt(SpeechletOutputSpeech.defaultInstance);
+export class Reprompt {
+    public static get defaultInstance(): Reprompt {
+        return new Reprompt(OutputSpeech.defaultInstance);
     }
 
-    constructor(public outputSpeech: SpeechletOutputSpeech) {}
+    constructor(public outputSpeech: OutputSpeech) {}
 }

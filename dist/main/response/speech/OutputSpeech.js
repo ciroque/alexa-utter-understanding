@@ -1,13 +1,13 @@
 "use strict";
-class SpeechletOutputSpeech {
+class OutputSpeech {
     constructor(text, type) {
         this.text = text;
         this.type = type;
     }
     static get defaultInstance() {
-        return new SpeechletOutputSpeech('Default Speechlet Output', SpeechletOutputSpeech.PLAINTEXT);
+        return new OutputSpeech('Default Speechlet Output', OutputSpeech.PLAINTEXT);
     }
 }
-SpeechletOutputSpeech.PLAINTEXT = 'PlainText';
-exports.SpeechletOutputSpeech = SpeechletOutputSpeech;
+OutputSpeech.PLAINTEXT = 'PlainText';
+exports.OutputSpeech = OutputSpeech;
 //# sourceMappingURL=OutputSpeech.js.map

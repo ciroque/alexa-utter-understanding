@@ -1,6 +1,6 @@
-import { SpeechletOutputSpeech } from './OutputSpeech';
-export declare class SpeechletReprompt {
-    outputSpeech: SpeechletOutputSpeech;
-    static readonly defaultInstance: SpeechletReprompt;
-    constructor(outputSpeech: SpeechletOutputSpeech);
+import { OutputSpeech } from './OutputSpeech';
+export declare class Reprompt {
+    outputSpeech: OutputSpeech;
+    static readonly defaultInstance: Reprompt;
+    constructor(outputSpeech: OutputSpeech);
 }

@@ -1,14 +1,14 @@
 "use strict";
-class SpeechletCard {
+class Card {
     constructor(title, content, type) {
         this.title = title;
         this.content = content;
         this.type = type;
     }
     static get defaultInstance() {
-        return new SpeechletCard('Card Title', 'Card Content', 'Simple');
+        return new Card('Card Title', 'Card Content', 'Simple');
     }
 }
-SpeechletCard.SIMPLE = 'Simple';
-exports.SpeechletCard = SpeechletCard;
+Card.SIMPLE = 'Simple';
+exports.Card = Card;
 //# sourceMappingURL=Card.js.map

@@ -5,8 +5,8 @@ const OutputSpeech_1 = require('../speech/OutputSpeech');
 const Card_1 = require('../speech/Card');
 class UnknownIntentResponse {
     static getInstance(sessionAttributes, shouldEndSession) {
-        let outputSpeech = new OutputSpeech_1.SpeechletOutputSpeech(this.outputText, OutputSpeech_1.SpeechletOutputSpeech.PLAINTEXT);
-        let card = new Card_1.SpeechletCard('Unknown Intent', this.outputText, Card_1.SpeechletCard.SIMPLE);
+        let outputSpeech = new OutputSpeech_1.OutputSpeech(this.outputText, OutputSpeech_1.OutputSpeech.PLAINTEXT);
+        let card = new Card_1.Card('Unknown Intent', this.outputText, Card_1.Card.SIMPLE);
         let speechletResponse = new SpeechletResponse_1.SpeechletResponse(outputSpeech, card, null, shouldEndSession);
         return new SpeechletResponseEnvelope_1.SpeechletResponseEnvelope(speechletResponse, sessionAttributes);
     }

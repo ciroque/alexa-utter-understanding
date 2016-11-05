@@ -1,4 +1,4 @@
-import {AlexaResponse} from '../../response/AlexaResponse';
+import {SpeechletResponseEnvelope} from '../../response/SpeechletResponseEnvelope';
 import {UnknownIntentHandler} from '../intent/UnknownIntentHandler';
 import {IntentHandler} from '../intent/IntentHandler';
 import {RequestHandler} from './RequestHandler';
@@ -12,7 +12,7 @@ export class IntentRequestHandler extends RequestHandler {
         this.defaultHandler = unknownIntentHandler || new UnknownIntentHandler();
     }
 
-    public handleRequest(event: any, context: any): Promise<AlexaResponse> {
+    public handleRequest(event: any, context: any): Promise<SpeechletResponseEnvelope> {
         this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)})`);
         let handler = this.intentHandlers[event.request.intent.name] || this.defaultHandler;
         return handler.handleIntent(event, context);

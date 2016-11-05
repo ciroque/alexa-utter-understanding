@@ -1,6 +1,6 @@
 import chai = require('chai');
 import {UtterUnderstanding} from '../main/UtterUnderstanding';
-import {AlexaResponse} from '../main/response/AlexaResponse';
+import {SpeechletResponseEnvelope} from '../main/response/SpeechletResponseEnvelope';
 import {UnknownRequestHandler} from '../main/handlers/request/UnknownRequestHandler';
 import {MockEvent} from './MockEvent';
 import MockRequestHandler from './MockRequestHandler';
@@ -24,7 +24,7 @@ describe('UtterUnderstanding', () => {
         let utterUnderstanding = new UtterUnderstanding();
         utterUnderstanding
             .handleRequest(event, null)
-            .then((response: AlexaResponse) => {
+            .then((response: SpeechletResponseEnvelope) => {
                 expect(response).to.not.eq(null);
                 done();
             })
@@ -36,7 +36,7 @@ describe('UtterUnderstanding', () => {
         let utterUnderstanding = new UtterUnderstanding();
         utterUnderstanding
             .handleRequest(event, null)
-            .then((response: AlexaResponse) => {
+            .then((response: SpeechletResponseEnvelope) => {
                 expect(response).to.not.eq(null);
 
                 // NOTE: The general idea is that this text will contain the available actions...
@@ -50,13 +50,13 @@ describe('UtterUnderstanding', () => {
         let requestName = 'FELDERGARB';
         let utterUnderstanding = new UtterUnderstanding();
         let event = new MockEvent(requestName);
-        let expectedResponse = AlexaResponse.defaultInstance;
+        let expectedResponse = SpeechletResponseEnvelope.defaultInstance;
         let handler = new MockRequestHandler(expectedResponse);
         utterUnderstanding.registerRequestHandler(requestName, handler);
 
         utterUnderstanding
             .handleRequest(event, null)
-            .then((response: AlexaResponse) => {
+            .then((response: SpeechletResponseEnvelope) => {
                 expect(handler.handled).to.eq(true);
                 expect(response).to.eq(expectedResponse);
                 done();
@@ -84,13 +84,13 @@ describe('UtterUnderstanding', () => {
     it('allows a preprocessor to be registered', (done: any) => {
         let utterUnderstanding = new UtterUnderstanding();
         let event = new MockEvent('FELDERGARB');
-        let expectedResponse = AlexaResponse.defaultInstance;
+        let expectedResponse = SpeechletResponseEnvelope.defaultInstance;
         let handler = new MockRequestHandler(expectedResponse);
         utterUnderstanding.registerPreProcessHandler(handler);
 
         utterUnderstanding
             .handleRequest(event, null)
-            .then((_: AlexaResponse) => {
+            .then((_: SpeechletResponseEnvelope) => {
                 expect(handler.handled).to.eq(true);
                 done();
             })
@@ -116,13 +116,13 @@ describe('UtterUnderstanding', () => {
     it('allows a post-request processor to be registered', (done: any) => {
         let utterUnderstanding = new UtterUnderstanding();
         let event = new MockEvent('FELDERGARB');
-        let expectedResponse = AlexaResponse.defaultInstance;
+        let expectedResponse = SpeechletResponseEnvelope.defaultInstance;
         let handler = new MockRequestPostProcessor(expectedResponse);
         utterUnderstanding.registerPostProcessHandler(handler);
 
         utterUnderstanding
             .handleRequest(event, null)
-            .then((response: AlexaResponse) => {
+            .then((response: SpeechletResponseEnvelope) => {
                 expect(handler.handled).to.eq(true);
                 expect(response).to.eq(expectedResponse);
                 done();

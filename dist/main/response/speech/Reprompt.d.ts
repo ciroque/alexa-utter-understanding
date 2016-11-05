@@ -1,4 +1,4 @@
-import { SpeechletOutputSpeech } from './SpeechletOutputSpeech';
+import { SpeechletOutputSpeech } from './OutputSpeech';
 export declare class SpeechletReprompt {
     outputSpeech: SpeechletOutputSpeech;
     static readonly defaultInstance: SpeechletReprompt;

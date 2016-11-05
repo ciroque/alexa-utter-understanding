@@ -1,5 +1,5 @@
 import {Logger} from '../../Logger';
-import {AlexaResponse} from '../../response/AlexaResponse';
+import {SpeechletResponseEnvelope} from '../../response/SpeechletResponseEnvelope';
 
 export abstract class IntentHandler {
     protected logger: Logger;
@@ -8,5 +8,5 @@ export abstract class IntentHandler {
         this.logger = new Logger(name);
     }
 
-    public abstract handleIntent(event: any, context: any): Promise<AlexaResponse>;
+    public abstract handleIntent(event: any, context: any): Promise<SpeechletResponseEnvelope>;
 }

@@ -1,4 +1,4 @@
-import {AlexaResponse} from '../../response/AlexaResponse';
+import {SpeechletResponseEnvelope} from '../../response/SpeechletResponseEnvelope';
 import {Logger} from '../../Logger';
 
 export abstract class RequestPostProcessor {
@@ -8,5 +8,5 @@ export abstract class RequestPostProcessor {
         this.logger = new Logger(name);
     }
 
-    abstract handleRequest(event: any, context: any, response: AlexaResponse): Promise<AlexaResponse>;
+    abstract handleRequest(event: any, context: any, response: SpeechletResponseEnvelope): Promise<SpeechletResponseEnvelope>;
 }

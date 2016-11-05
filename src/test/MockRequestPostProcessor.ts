@@ -1,5 +1,5 @@
 import {RequestPostProcessor} from '../main/handlers/request/RequestPostProcessor';
-import {AlexaResponse} from '../main/response/AlexaResponse';
+import {SpeechletResponseEnvelope} from '../main/response/SpeechletResponseEnvelope';
 
 export class MockRequestPostProcessor extends RequestPostProcessor {
     private requesthandled = false;
@@ -12,13 +12,13 @@ export class MockRequestPostProcessor extends RequestPostProcessor {
         return this.requesthandled;
     }
 
-    handleRequest(event: any, context: any, response: AlexaResponse): Promise<AlexaResponse> {
+    handleRequest(event: any, context: any, response: SpeechletResponseEnvelope): Promise<SpeechletResponseEnvelope> {
         this.logger.debug(
             `Post-processing __EVT(${JSON.stringify(event)}), __CTXT(${JSON.stringify(context)}, __RESP(${JSON.stringify(response)}))`
         );
         this.requesthandled = true;
         return new Promise((resolve: any, reject: any) => {
-            if (this.response instanceof AlexaResponse) {
+            if (this.response instanceof SpeechletResponseEnvelope) {
                 this.logger.debug(`RESOLVING __VALUE(${JSON.stringify(this.response)})`);
                 resolve(this.response);
             } else {

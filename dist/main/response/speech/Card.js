@@ -11,4 +11,4 @@ class SpeechletCard {
 }
 SpeechletCard.SIMPLE = 'Simple';
 exports.SpeechletCard = SpeechletCard;
-//# sourceMappingURL=SpeechletCard.js.map
+//# sourceMappingURL=Card.js.map

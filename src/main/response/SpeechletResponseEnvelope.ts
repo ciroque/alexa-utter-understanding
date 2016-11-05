@@ -1,11 +1,11 @@
 import {SpeechletResponse} from './SpeechletResponse';
 
-export class AlexaResponse {
+export class SpeechletResponseEnvelope {
     public version = '1.0';
 
-    public static get defaultInstance(): AlexaResponse {
+    public static get defaultInstance(): SpeechletResponseEnvelope {
         let speechletResponse = SpeechletResponse.defaultInstance;
-        return new AlexaResponse(speechletResponse, {});
+        return new SpeechletResponseEnvelope(speechletResponse, {});
     }
 
     constructor(public response: SpeechletResponse, sessionAttributes: any) { }

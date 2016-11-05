@@ -1,5 +1,5 @@
 import {RequestPostProcessor} from './handlers/request/RequestPostProcessor';
-import {AlexaResponse} from './response/AlexaResponse';
+import {SpeechletResponseEnvelope} from './response/SpeechletResponseEnvelope';
 import NullRequestPostProcessor from './handlers/request/DefaultRequestPostProcessor';
 import NullRequestHandler from './handlers/request/DefaultRequestHandler';
 import {UnknownRequestHandler} from './handlers/request/UnknownRequestHandler';
@@ -19,7 +19,7 @@ export class UtterUnderstanding {
     private preProcessor: RequestHandler;
     private postProcessor: RequestPostProcessor;
 
-    static handler(event: any, context: any): Promise<AlexaResponse> {
+    static handler(event: any, context: any): Promise<SpeechletResponseEnvelope> {
         return new UtterUnderstanding().handleRequest(event, context);
     }
 
@@ -33,9 +33,9 @@ export class UtterUnderstanding {
         this.postProcessor = new NullRequestPostProcessor();
     }
 
-    public handleRequest(event: any, context: any): Promise<AlexaResponse> {
+    public handleRequest(event: any, context: any): Promise<SpeechletResponseEnvelope> {
         this.logger.debug(`handleRequest __EVENT(${JSON.stringify(event)}, __CONTEXT(${JSON.stringify(context)}))`);
-        let result: Promise<AlexaResponse>;
+        let result: Promise<SpeechletResponseEnvelope>;
 
         try {
             result = this.preProcessor
@@ -44,7 +44,7 @@ export class UtterUnderstanding {
                     let handler: RequestHandler = this.handlers[event.request.type] || this.unknownRequestHandler;
                     return handler.handleRequest(event, context);
                 })
-                .then((response: AlexaResponse) => {
+                .then((response: SpeechletResponseEnvelope) => {
                     return this.postProcessor.handleRequest(event, context, response);
                 })
                 .catch((error: any) => {

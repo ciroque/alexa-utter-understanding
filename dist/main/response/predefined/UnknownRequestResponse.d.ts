@@ -1,5 +1,5 @@
-import { AlexaResponse } from '../AlexaResponse';
+import { SpeechletResponseEnvelope } from '../SpeechletResponseEnvelope';
 export declare class UnknownRequestResponse {
     private static outputText;
-    static getInstance(sessionAttributes: any, shouldEndSession: boolean): AlexaResponse;
+    static getInstance(sessionAttributes: any, shouldEndSession: boolean): SpeechletResponseEnvelope;
 }

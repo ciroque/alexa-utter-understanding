@@ -1,5 +1,5 @@
 "use strict";
-const AlexaResponse_1 = require('../../response/AlexaResponse');
+const SpeechletResponseEnvelope_1 = require('../../response/SpeechletResponseEnvelope');
 const RequestHandler_1 = require('./RequestHandler');
 class SessionEndedRequestHandler extends RequestHandler_1.RequestHandler {
     constructor() {
@@ -8,7 +8,7 @@ class SessionEndedRequestHandler extends RequestHandler_1.RequestHandler {
     handleRequest(event, context) {
         this.logger.debug('Ending Session');
         return new Promise((resolve) => {
-            resolve(AlexaResponse_1.AlexaResponse.defaultInstance);
+            resolve(SpeechletResponseEnvelope_1.SpeechletResponseEnvelope.defaultInstance);
         });
     }
 }

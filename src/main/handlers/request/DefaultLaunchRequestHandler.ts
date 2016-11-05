@@ -1,4 +1,4 @@
-import {AlexaResponse} from '../../response/AlexaResponse';
+import {SpeechletResponseEnvelope} from '../../response/SpeechletResponseEnvelope';
 import {RequestHandler} from './RequestHandler';
 
 export class DefaultLaunchRequestHandler extends RequestHandler {
@@ -6,7 +6,7 @@ export class DefaultLaunchRequestHandler extends RequestHandler {
         super('DefaultLaunchRequestHandler');
     }
 
-    public handleRequest(event: any, context: any): Promise<AlexaResponse> {
+    public handleRequest(event: any, context: any): Promise<SpeechletResponseEnvelope> {
         return new Promise((resolve: any, reject: any) => {
             reject('Not Implemented');
         });

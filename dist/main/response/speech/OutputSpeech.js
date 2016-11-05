@@ -10,4 +10,4 @@ class SpeechletOutputSpeech {
 }
 SpeechletOutputSpeech.PLAINTEXT = 'PlainText';
 exports.SpeechletOutputSpeech = SpeechletOutputSpeech;
-//# sourceMappingURL=SpeechletOutputSpeech.js.map
+//# sourceMappingURL=OutputSpeech.js.map

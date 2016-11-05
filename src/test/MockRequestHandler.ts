@@ -1,8 +1,8 @@
-import {AlexaResponse} from '../main/response/AlexaResponse';
+import {SpeechletResponseEnvelope} from '../main/response/SpeechletResponseEnvelope';
 import {RequestHandler} from '../main/handlers/request/RequestHandler';
 
 export default class MockRequestHandler extends RequestHandler {
-    private response: AlexaResponse;
+    private response: SpeechletResponseEnvelope;
     private requestHandled = false;
 
     constructor(response?: any) {
@@ -14,10 +14,10 @@ export default class MockRequestHandler extends RequestHandler {
         return this.requestHandled;
     }
 
-    handleRequest(event: any, context: any): Promise<AlexaResponse> {
+    handleRequest(event: any, context: any): Promise<SpeechletResponseEnvelope> {
         this.requestHandled = true;
         return new Promise((resolve: any, reject: any) => {
-            if (this.response instanceof AlexaResponse) {
+            if (this.response instanceof SpeechletResponseEnvelope) {
                 this.logger.debug(`RESOLVING __VALUE(${JSON.stringify(this.response)})`);
                 resolve(this.response);
             } else {

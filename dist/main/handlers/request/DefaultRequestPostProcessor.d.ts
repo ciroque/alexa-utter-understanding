@@ -1,6 +1,6 @@
 import { RequestPostProcessor } from './RequestPostProcessor';
-import { AlexaResponse } from '../../response/AlexaResponse';
+import { SpeechletResponseEnvelope } from '../../response/SpeechletResponseEnvelope';
 export default class DefaultRequestPostProcessor extends RequestPostProcessor {
     constructor();
-    handleRequest(event: any, context: any, response: AlexaResponse): Promise<AlexaResponse>;
+    handleRequest(event: any, context: any, response: SpeechletResponseEnvelope): Promise<SpeechletResponseEnvelope>;
 }

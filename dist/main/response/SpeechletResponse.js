@@ -1,7 +1,7 @@
 "use strict";
-const SpeechletOutputSpeech_1 = require('./SpeechletOutputSpeech');
-const SpeechletCard_1 = require('./SpeechletCard');
-const SpeechletReprompt_1 = require('./SpeechletReprompt');
+const OutputSpeech_1 = require('./speech/OutputSpeech');
+const Card_1 = require('./speech/Card');
+const Reprompt_1 = require('./speech/Reprompt');
 class SpeechletResponse {
     constructor(outputSpeech, card, reprompt, shouldEndSession) {
         this.outputSpeech = outputSpeech;
@@ -10,9 +10,9 @@ class SpeechletResponse {
         this.shouldEndSession = shouldEndSession;
     }
     static get defaultInstance() {
-        let outputSpeech = SpeechletOutputSpeech_1.SpeechletOutputSpeech.defaultInstance;
-        let card = SpeechletCard_1.SpeechletCard.defaultInstance;
-        let reprompt = SpeechletReprompt_1.SpeechletReprompt.defaultInstance;
+        let outputSpeech = OutputSpeech_1.SpeechletOutputSpeech.defaultInstance;
+        let card = Card_1.SpeechletCard.defaultInstance;
+        let reprompt = Reprompt_1.SpeechletReprompt.defaultInstance;
         return new SpeechletResponse(outputSpeech, card, reprompt, true);
     }
 }

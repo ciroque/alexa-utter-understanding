@@ -1,6 +1,6 @@
-import {SpeechletOutputSpeech} from './SpeechletOutputSpeech';
-import {SpeechletCard} from './SpeechletCard';
-import {SpeechletReprompt} from './SpeechletReprompt';
+import {SpeechletOutputSpeech} from './speech/OutputSpeech';
+import {SpeechletCard} from './speech/Card';
+import {SpeechletReprompt} from './speech/Reprompt';
 
 export class SpeechletResponse {
 

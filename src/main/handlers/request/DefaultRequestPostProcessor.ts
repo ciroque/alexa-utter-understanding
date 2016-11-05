@@ -1,5 +1,5 @@
 import {RequestPostProcessor} from './RequestPostProcessor';
-import {AlexaResponse} from '../../response/AlexaResponse';
+import {SpeechletResponseEnvelope} from '../../response/SpeechletResponseEnvelope';
 
 export default class DefaultRequestPostProcessor extends RequestPostProcessor {
 
@@ -7,7 +7,7 @@ export default class DefaultRequestPostProcessor extends RequestPostProcessor {
         super('DefaultRequestPostProcessor');
     }
 
-    handleRequest(event: any, context: any, response: AlexaResponse): Promise<AlexaResponse> {
+    handleRequest(event: any, context: any, response: SpeechletResponseEnvelope): Promise<SpeechletResponseEnvelope> {
         this.logger.debug('Returning the given response.');
         return new Promise((resolve: any) => { resolve(response); });
     }

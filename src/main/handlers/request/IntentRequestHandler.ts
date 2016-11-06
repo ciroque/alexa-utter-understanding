@@ -18,12 +18,27 @@ export class IntentRequestHandler extends RequestHandler {
         return handler.handleIntent(event, context);
     }
 
+    /**
+     * @deprecated since version 1.1.12, use the defineIntentHandler instead.
+     */
     public registerIntentHandler(name: string, handler: IntentHandler): void {
         this.logger.debug(`Registering Intent handler for '${name}'.`);
         this.intentHandlers[name] = handler;
     }
 
+    /**
+     * @deprecated since version 1.1.12, use the handlerDefined instead.
+     */
     public handlerRegistered(name: string, handler: IntentHandler): boolean {
         return this.intentHandlers[name] === handler;
+    }
+
+    public defineIntentHandler(handler: IntentHandler): void {
+        this.logger.debug(`Registering Intent handler for '${handler.intentName}'.`);
+        this.intentHandlers[handler.intentName] = handler;
+    }
+
+    public handlerDefined(handler: IntentHandler): boolean {
+        return this.intentHandlers[handler.intentName] === handler;
     }
 }

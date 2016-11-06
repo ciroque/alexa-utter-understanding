@@ -4,7 +4,7 @@ import {SpeechletResponseEnvelope} from '../../response/SpeechletResponseEnvelop
 export abstract class IntentHandler {
     protected logger: Logger;
 
-    constructor(protected name: string) {
+    constructor(protected name: string, public intentName?: string) {
         this.logger = new Logger(name);
     }
 

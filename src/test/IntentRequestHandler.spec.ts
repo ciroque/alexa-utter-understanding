@@ -32,6 +32,12 @@ class MockIntentHandler extends IntentHandler {
     }
 }
 
+class MockIntentHandlerWithIntentName extends IntentHandler {
+    handleIntent(event: any, context: any): Promise<SpeechletResponseEnvelope> {
+        return undefined;
+    }
+}
+
 describe('IntentRequestHandler', () => {
     it(`Allows registration of an Intent Handler`, () => {
         let intentName = 'MockIntent';
@@ -81,5 +87,14 @@ describe('IntentRequestHandler', () => {
                 done();
             })
             .catch(done);
+    });
+
+    it('registers an IntentHandler having an intentName property', () => {
+        let mockIntentHandlerWithIntentName = new MockIntentHandlerWithIntentName('IMockYou', 'MockIntent');
+        let intentRequestHandler = new IntentRequestHandler();
+
+        intentRequestHandler.defineIntentHandler(mockIntentHandlerWithIntentName);
+
+        expect(intentRequestHandler.handlerDefined(mockIntentHandlerWithIntentName)).to.eq(true);
     });
 });

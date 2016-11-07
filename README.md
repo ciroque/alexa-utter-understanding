@@ -34,12 +34,15 @@ export class MyAmazonHelpIntentHandler extends IntentHandler {
     }
 }
 
-let myHelpHandler = new MyAmazonHelpIntentHandler('MyAmazonHelpIntentHandler');
-let myRequestHandler = new IntentRequestHandler();
-
-myRequestHandler.registerIntentHandler(IntentNames.Amazon.HelpIntent, myHelpHandler);
-
 let utter = new UtterUnderstanding();
+let myRequestHandler = new IntentRequestHandler();
+let myHelpHandler = new MyAmazonHelpIntentHandler(
+    'MyAmazonHelpIntentHandler', 
+    AmazonIntentNames.HelpIntent
+);
+
+myRequestHandler.defineIntentHandler(myHelpHandler);
+
 utter.registerRequestHandler(RequestNames.IntentRequest, myRequestHandler);
 
 utter

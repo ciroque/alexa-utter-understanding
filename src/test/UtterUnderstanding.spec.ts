@@ -32,7 +32,7 @@ describe('UtterUnderstanding', () => {
     });
 
     it('handles an Unknown Request', (done: any) => {
-        let event = new MockEvent('FELDERGARB');
+        let event = new MockEvent('FELDERGARB', null);
         let utterUnderstanding = new UtterUnderstanding();
         utterUnderstanding
             .handleRequest(event, null)
@@ -49,7 +49,7 @@ describe('UtterUnderstanding', () => {
     it('allows registration of a request handler', (done) => {
         let requestName = 'FELDERGARB';
         let utterUnderstanding = new UtterUnderstanding();
-        let event = new MockEvent(requestName);
+        let event = new MockEvent(requestName, null);
         let expectedResponse = SpeechletResponseEnvelope.defaultInstance;
         let handler = new MockRequestHandler(expectedResponse);
         utterUnderstanding.registerRequestHandler(requestName, handler);
@@ -67,7 +67,7 @@ describe('UtterUnderstanding', () => {
     it('handles failure in registered request handler', (done) => {
         let requestName = 'FELDERGARB';
         let utterUnderstanding = new UtterUnderstanding();
-        let event = new MockEvent(requestName);
+        let event = new MockEvent(requestName, null);
         let expectedResponse = 'Could not connect to to the database';
         let handler = new MockRequestHandler(expectedResponse);
         utterUnderstanding.registerRequestHandler(requestName, handler);
@@ -83,7 +83,7 @@ describe('UtterUnderstanding', () => {
 
     it('allows a preprocessor to be registered', (done: any) => {
         let utterUnderstanding = new UtterUnderstanding();
-        let event = new MockEvent('FELDERGARB');
+        let event = new MockEvent('FELDERGARB', null);
         let expectedResponse = SpeechletResponseEnvelope.defaultInstance;
         let handler = new MockRequestHandler(expectedResponse);
         utterUnderstanding.registerPreProcessHandler(handler);
@@ -99,7 +99,7 @@ describe('UtterUnderstanding', () => {
 
     it('handles a failure in a preprocessor', (done: any) => {
         let utterUnderstanding = new UtterUnderstanding();
-        let event = new MockEvent('FELDERGARB');
+        let event = new MockEvent('FELDERGARB', null);
         let expectedResponse = 'Invalid App ID';
         let handler = new MockRequestHandler(expectedResponse);
         utterUnderstanding.registerPreProcessHandler(handler);
@@ -115,7 +115,7 @@ describe('UtterUnderstanding', () => {
 
     it('allows a post-request processor to be registered', (done: any) => {
         let utterUnderstanding = new UtterUnderstanding();
-        let event = new MockEvent('FELDERGARB');
+        let event = new MockEvent('FELDERGARB', null);
         let expectedResponse = SpeechletResponseEnvelope.defaultInstance;
         let handler = new MockRequestPostProcessor(expectedResponse);
         utterUnderstanding.registerPostProcessHandler(handler);
@@ -132,7 +132,7 @@ describe('UtterUnderstanding', () => {
 
     it('handles a failure in a postprocessor', (done: any) => {
         let utterUnderstanding = new UtterUnderstanding();
-        let event = new MockEvent('FELDERGARB');
+        let event = new MockEvent('FELDERGARB', null);
         let expectedResponse = 'Something went horribly horribly wrong.';
         let handler = new MockRequestPostProcessor(expectedResponse);
         utterUnderstanding.registerPostProcessHandler(handler);

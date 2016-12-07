@@ -1,7 +1,7 @@
 export class MockEvent {
     public request: any;
 
-    constructor(requestType: string = null, intentName: string = null) {
+    constructor(requestType: string, intentName: string) {
         this.request = {
             type: requestType,
             intent: {
